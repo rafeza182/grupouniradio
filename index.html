@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Empresarial Uniradio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #222;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .tv-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 10px;
+            border: 2px solid white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tv-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .tv-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+        }
+        .tv-title {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .divider {
+           margin: 40px 0;
+           border-top: 8px solid #bbb;
+           border-radius: 5px;
+        }
+
+        .header-banner {
+    position: absolute; /* Se coloca detrás del logo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 285px; /* Ajusta la altura según tu diseño */
+    background-image: url('https://cdn.pixabay.com/photo/2015/08/23/09/22/banner-902589_640.jpg'); /* Reemplaza con la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Lo envía detrás del contenido */
+}
+      
+    </style>
+</head>
+<body>
+  
+  <div class="header-banner"></div>
+    <div class="container">
+        <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/GEU.png" alt="Grupo Uniradio" class="logo">
+
+      <style>
+  .menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .menu a {
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+  }
+  .menu a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: #ffcc00;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  .menu a:hover {
+    color: #ffcc00;
+  }
+  .menu a:hover::after {
+    width: 100%;
+  }
+</style>
+
+<nav class="menu">
+  <a href="https://ejemplo.com" class="menu-item">Inicio</a>
+  <a href="https://ejemplo.com/nosotros" class="menu-item">Nosotros</a>
+  <a href="https://www.facebook.com/GMulticolor" class="menu-item">Multicolor</a>
+  <a href="https://ejemplo.com/contacto" class="menu-item">Contacto</a>
+</nav>
+ <br>
+        <h1>Grupo Empresarial Uniradio</h1>
+        <p>24 horas en vivo de contenido 100% Original</p>
+      <br>
+        
+        <h2>Canales de TV</h2>
+      <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="tv-container">
+                    <iframe src="https://appsmedia.live/a_playerhd/geu/TV/CANAL21HD/" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p class="tv-title">Galaxia TV Canal 21 HD</p>
+            </div>
+            <div class="col-md-4">
+                <div class="tv-container">
+                    <iframe src="https://appsmedia.live/a_playerhd/geu/TV/KNTV/" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p class="tv-title">La Voz de Olancho TV HD</p>
+            </div>
+            <div class="col-md-4">
+                <div class="tv-container">
+                    <iframe src="https://appsmedia.live/a_playerhd/geu/TV/galaxia/" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p class="tv-title">Radio Galaxia Digital HD</p>
+            </div>
+        </div>
+         <br>
+        <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias en Vivo</title>
+    <style>
+        /* 🔹 Estilos del Ticker de Noticias */
+        .news-ticker {
+            width: 100%;
+            overflow: hidden;
+            background: #1e1e1e;
+            color: white;
+            padding: 10px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .news-container {
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .news-track {
+            display: flex;
+            gap: 30px;
+            animation: scrollNews 30s linear infinite;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+            color: white;
+            text-decoration: none;
+        }
+
+        .news-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes scrollNews {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔹 Ticker de Noticias con Imágenes -->
+    <div class="news-ticker">
+        <div class="news-container">
+            <div class="news-track" id="news-track">
+                <!-- 🔹 Aquí se cargarán las noticias dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const rssFeedUrl = "https://fetchrss.com/rss/67bb95c42ae99793a60d089267bb9583dea2f6aa660363d2.rss";
+            const newsTrack = document.getElementById("news-track");
+
+            try {
+                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssFeedUrl)}`);
+                const data = await response.json();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, "text/xml");
+                const items = xml.querySelectorAll("item");
+
+                items.forEach(item => {
+                    const title = item.querySelector("title").textContent;
+                    const link = item.querySelector("link").textContent;
+
+                    let imageUrl = "";
+                    const enclosure = item.querySelector("enclosure");
+                    if (enclosure && enclosure.getAttribute("url")) {
+                        imageUrl = enclosure.getAttribute("url");
+                    } else {
+                        const media = item.querySelector("media\\:content, content");
+                        if (media && media.getAttribute("url")) {
+                            imageUrl = media.getAttribute("url");
+                        }
+                    }
+
+                    const newsItem = document.createElement("a");
+                    newsItem.href = link;
+                    newsItem.target = "_blank";
+                    newsItem.classList.add("news-item");
+
+                    if (imageUrl) {
+                        const img = document.createElement("img");
+                        img.src = imageUrl;
+                        img.alt = "Noticia";
+                        newsItem.appendChild(img);
+                    }
+
+                    const text = document.createElement("span");
+                    text.textContent = title;
+                    newsItem.appendChild(text);
+
+                    newsTrack.appendChild(newsItem);
+                });
+
+            } catch (error) {
+                console.error("Error cargando el RSS Feed:", error);
+            }
+        });
+    </script>
+
+</body>
+
+  <br>
+      
+        <h2>Radios en Vivo</h2>
+      <br>
+        <div class="row">
+            <div class="col-md-4">
+                <style>
+    .radio1-container {
+        display: flex;
+        align-items: center;
+        background: #222;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        max-width: 350px;
+        height: 100px;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .radio1-logo {
+        width: 50px;
+        height: 50px;
+        border: 100%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .radio1-info {
+        flex-grow: 1;
+    }
+
+    .radio1-song {
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+
+    .radio1-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .radio1-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+                  
+    .radio1-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+    }
+                  
+    .radio1-btn:hover {
+        color: #1DB954;
+    }
+
+    .volume1-slider {
+        width: 100px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="radio1-container">
+    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png" alt="Radio1 Logo" class="radio1-logo">
+    <div class="radio1-info">
+        <div class="radio1-song" id="song1-title">Cargando...</div>
+        <div class="radio1-controls">
+            <button class="radio1-btn" onclick="togglePlayPause1()">▶️</button>
+            <input type="range" class="volume1-slider" id="volume1-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume1(this.value)">
+        </div>
+    </div>
+</div>
+
+<audio id="radio1-player">
+    <source src="https://sonicpanelpro.com:8040/stream?icy=?" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+</audio>
+
+<script>
+    const player = document.getElementById("radio1-player");
+    const playBtn = document.querySelector(".radio1-btn");
+    const songTitle = document.getElementById("song1-title");
+
+    function togglePlayPause1() {
+        if (player.paused) {
+            player.play();
+            playBtn.textContent = "⏸️";
+        } else {
+            player.pause();
+            playBtn.textContent = "▶️";
+        }
+    }
+
+    function setVolume1(value) {
+        player.volume = value;
+    }
+
+    async function fetchSongTitle1() {
+        try {
+            const response = await fetch("https://sonicpanelpro.com:8040/stats?json=1");
+            const data = await response.json();
+            if (data && data.songtitle) {
+                songTitle.textContent = data.songtitle;
+            } else {
+                songTitle.textContent = "Artista Desconocido";
+            }
+        } catch (error) {
+            songTitle.textContent = "Error al obtener info";
+        }
+    }
+
+    setInterval(fetchSongTitle1, 5000); // Actualiza cada 5 segundos
+    fetchSongTitle1(); // Llamado inicial
+</script>
+
+              
+
+            </div>
+         
+            <div class="col-md-4">
+                <style>
+    .radio2-container {
+        display: flex;
+        align-items: center;
+        background: #222;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        max-width: 350px;
+        height: 100px;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .radio2-logo {
+        width: 50px;
+        height: 50px;
+        border: 100%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .radio2-info {
+        flex-grow: 1;
+    }
+
+    .radio2-song {
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+
+    .radio2-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .radio2-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .radio2-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(0, 0, 255, 0.8);
+    }
+
+    .radio2-btn:hover {
+        color: #1DB954;
+    }
+
+    .volume2-slider {
+        width: 100px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="radio2-container">
+    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png" alt="Radio2 Logo" class="radio2-logo">
+    <div class="radio2-info">
+        <div class="radio2-song" id="song2-title">Cargando...</div>
+        <div class="radio2-controls">
+            <button class="radio2-btn" onclick="togglePlayPause2()">▶️</button>
+            <input type="range" class="volume2-slider" id="volume2-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume2(this.value)">
+        </div>
+    </div>
+</div>
+
+<audio id="radio2-player">
+    <source src="https://sonicpanelpro.com:8020/stream?icy=?" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+</audio>
+
+<script>
+    const player2 = document.getElementById("radio2-player");
+    const playBtn2 = document.querySelector(".radio2-btn");
+    const songTitle2 = document.getElementById("song2-title");
+
+    function togglePlayPause2() {
+        if (player2.paused) {
+            player2.play();
+            playBtn2.textContent = "⏸️";
+        } else {
+            player2.pause();
+            playBtn2.textContent = "▶️";
+        }
+    }
+
+    function setVolume2(value) {
+        player2.volume = value;
+    }
+
+    async function fetchSongTitle2() {
+        try {
+            const response2 = await fetch("https://sonicpanelpro.com:8020/stats?json=1");
+            const data2 = await response2.json();
+            if (data2 && data2.songtitle) {
+                songTitle2.textContent = data2.songtitle;
+            } else {
+                songTitle2.textContent = "Artista Desconocido";
+            }
+        } catch (error) {
+            songTitle2.textContent = "Error al obtener info";
+        }
+    }
+
+    setInterval(fetchSongTitle2, 5000); // Actualiza cada 5 segundos
+    fetchSongTitle2(); // Llamado inicial
+</script>
+
+            </div>
+            <div class="col-md-4">
+                <style>
+    .radio3-container {
+        display: flex;
+        align-items: center;
+        background: #222;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        max-width: 350px;
+        height: 100px;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .radio3-logo {
+        width: 55px;
+        height: 50px;
+        border: 100%;
+        object-fit: center;
+        margin-right: 10px;
+    }
+
+    .radio3-info {
+        flex-grow: 1;
+    }
+
+    .radio3-song {
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+
+    .radio3-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .radio3-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .radio3-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+    }
+                  
+    .radio3-btn:hover {
+        color: #1DB954;
+    }
+
+    .volume3-slider {
+        width: 100px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="radio3-container">
+    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png" alt="Radio3 Logo" class="radio3-logo">
+    <div class="radio3-info">
+        <div class="radio3-song" id="song3-title">Cargando...</div>
+        <div class="radio3-controls">
+            <button class="radio3-btn" onclick="togglePlayPause3()">▶️</button>
+            <input type="range" class="volume3-slider" id="volume3-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume3(this.value)">
+        </div>
+    </div>
+</div>
+
+<audio id="radio3-player">
+    <source src="https://sonicpanelpro.com:8042/stream?icy=?" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+</audio>
+
+<script>
+    const player3 = document.getElementById("radio3-player");
+    const playBtn3 = document.querySelector(".radio3-btn");
+    const songTitle3 = document.getElementById("song3-title");
+
+    function togglePlayPause3() {
+        if (player3.paused) {
+            player3.play();
+            playBtn3.textContent = "⏸️";
+        } else {
+            player3.pause();
+            playBtn3.textContent = "▶️";
+        }
+    }
+
+    function setVolume3(value) {
+        player3.volume = value;
+    }
+
+    async function fetchSongTitle3() {
+        try {
+            const response3 = await fetch("https://sonicpanelpro.com:8042/stats?json=1");
+            const data3 = await response3.json();
+            if (data3 && data3.songtitle) {
+                songTitle3.textContent = data3.songtitle;
+            } else {
+                songTitle3.textContent = "Artista Desconocido";
+            }
+        } catch (error) {
+            songTitle3.textContent = "Error al obtener info";
+        }
+    }
+
+    setInterval(fetchSongTitle3, 5000); // Actualiza cada 5 segundos
+    fetchSongTitle3(); // Llamado inicial
+</script>
+
+            </div>
+            <div class="col-md-4">
+                <style>
+    .radio4-container {
+        display: flex;
+        align-items: center;
+        background: #222;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        max-width: 350px;
+        height: 100px;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .radio4-logo {
+        width: 50px;
+        height: 50px;
+        border: 100%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .radio4-info {
+        flex-grow: 1;
+    }
+
+    .radio4-song {
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+
+    .radio4-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .radio4-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .radio4-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(0, 0, 255, 0.8);
+    }
+                  
+    .radio4-btn:hover {
+        color: #1DB954;
+    }
+
+    .volume4-slider {
+        width: 100px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="radio4-container">
+    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png" alt="Radio4 Logo" class="radio4-logo">
+    <div class="radio4-info">
+        <div class="radio4-song" id="song4-title">Cargando...</div>
+        <div class="radio4-controls">
+            <button class="radio4-btn" onclick="togglePlayPause4()">▶️</button>
+            <input type="range" class="volume4-slider" id="volume4-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume4(this.value)">
+        </div>
+    </div>
+</div>
+
+<audio id="radio4-player">
+    <source src="https://sonicpanelpro.com:8044/stream?icy=?" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+</audio>
+
+<script>
+    const player4 = document.getElementById("radio4-player");
+    const playBtn4 = document.querySelector(".radio4-btn");
+    const songTitle4 = document.getElementById("song4-title");
+
+    function togglePlayPause4() {
+        if (player4.paused) {
+            player4.play();
+            playBtn4.textContent = "⏸️";
+        } else {
+            player4.pause();
+            playBtn4.textContent = "▶️";
+        }
+    }
+
+    function setVolume4(value) {
+        player4.volume = value;
+    }
+
+    async function fetchSongTitle4() {
+        try {
+            const response4 = await fetch("https://sonicpanelpro.com:8044/stats?json=1");
+            const data4 = await response4.json();
+            if (data4 && data4.songtitle) {
+                songTitle4.textContent = data4.songtitle;
+            } else {
+                songTitle4.textContent = "Artista Desconocido";
+            }
+        } catch (error) {
+            songTitle4.textContent = "Error al obtener info";
+        }
+    }
+
+    setInterval(fetchSongTitle4, 5000); // Actualiza cada 5 segundos
+    fetchSongTitle4(); // Llamado inicial
+</script>
+
+            </div>
+            <div class="col-md-4">
+               <style>
+    .radio5-container {
+        display: flex;
+        align-items: center;
+        background: #222;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        max-width: 350px;
+        height: 100px;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .radio5-logo {
+        width: 50px;
+        height: 50px;
+        border: 100%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .radio5-info {
+        flex-grow: 1;
+    }
+
+    .radio5-song {
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+
+    .radio5-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .radio5-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .radio5-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+    }
+
+    .radio5-btn:hover {
+        color: #1DB954;
+    }
+
+    .volume5-slider {
+        width: 100px;
+        cursor: pointer;
+    }
+
+    .divider5 {
+           margin: 40px 50px;
+           border-top: 6px solid #bbb;
+        }
+                 
+</style>
+
+<div class="radio5-container">
+    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp" alt="Radio5 Logo" class="radio5-logo">
+    <div class="radio5-info">
+        <div class="radio5-song" id="song5-title">Cargando...</div>
+        <div class="radio5-controls">
+            <button class="radio5-btn" onclick="togglePlayPause5()">▶️</button>
+            <input type="range" class="volume5-slider" id="volume5-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume5(this.value)">
+        </div>
+    </div>
+</div>
+
+<audio id="radio5-player">
+    <source src="https://sonicpanelpro.com:8046/stream?icy=?" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+</audio>
+
+<script>
+    const player5 = document.getElementById("radio5-player");
+    const playBtn5 = document.querySelector(".radio5-btn");
+    const songTitle5 = document.getElementById("song5-title");
+
+    function togglePlayPause5() {
+        if (player5.paused) {
+            player5.play();
+            playBtn5.textContent = "⏸️";
+        } else {
+            player5.pause();
+            playBtn5.textContent = "▶️";
+        }
+    }
+
+    function setVolume5(value) {
+        player5.volume = value;
+    }
+
+      async function fetchSongTitle5() {
+        try {
+            const response5 = await fetch("https://sonicpanelpro.com:8046/stats?json=1");
+            const data5 = await response5.json();
+            if (data5 && data5.songtitle) {
+                songTitle5.textContent = data5.songtitle;
+            } else {
+                songTitle5.textContent = "Desconocido";
+            }
+        } catch (error) {
+            songTitle5.textContent = "Error al obtener info";
+        }
+    }
+
+    setInterval(fetchSongTitle5, 5000); // Actualiza cada 5 segundos
+    fetchSongTitle5(); // Llamado inicial
+</script>
+
+            </div>
+        </div>
+    </div>
+  <br>
+  <br>
+<div class="divider5"></div>
+  <br>
+
+  <footer class="footer">
+  <div class="footer-logos">
+     <a href="https://www.facebook.com/canal21gtv" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO%20GALAXIATV.png" alt="Canal de TV">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100093297494940" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png" alt="Radio 1">
+    </a>
+    <a href="https://www.facebook.com/GalaxiaDigital899" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png" alt="Radio 2">
+    </a>
+    <a href="https://facebook.com/radio3" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png" alt="Radio 3">
+    </a>
+    <a href="https://www.facebook.com/radiozrnp" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png" alt="Radio 4">
+    </a>
+    <a href="https://facebook.com/" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp" alt="Radio 5">
+    </a>
+    <a href="https://www.facebook.com/GMulticolor" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20MultiColor.png" alt="multicolor 1">
+    </a>
+  </div>
+  <p class="footer-text">GRUPO EMPRESARIAL UNIRADIO - PIONEROS EN COMUNICACIÓN</p>
+  <p class="footer-rights">&copy; 2025 Todos los derechos reservados.</p>
+</footer>
+  
+   <style>
+  .footer {
+  text-align: center;
+  background-color: #111;
+  padding: 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.footer-logos img {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.footer-logos a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.footer-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer-rights {
+  font-size: 14px;
+  opacity: 0.7;
+}
+ </style>
+  
+</body>
+</html>
