@@ -430,6 +430,7 @@
     const songTitle = document.getElementById("song1-title");
 
     function togglePlayPause1() {
+    stopAllRadios(player)
         if (player.paused) {
             player.play();
             playBtn.textContent = "⏸️";
@@ -553,6 +554,7 @@
     const songTitle2 = document.getElementById("song2-title");
 
     function togglePlayPause2() {
+    stopAllRadios(player2)
         if (player2.paused) {
             player2.play();
             playBtn2.textContent = "⏸️";
@@ -673,6 +675,7 @@
     const songTitle3 = document.getElementById("song3-title");
 
     function togglePlayPause3() {
+    stopAllRadios(player3)
         if (player3.paused) {
             player3.play();
             playBtn3.textContent = "⏸️";
@@ -793,6 +796,7 @@
     const songTitle4 = document.getElementById("song4-title");
 
     function togglePlayPause4() {
+    stopAllRadios(player4)
         if (player4.paused) {
             player4.play();
             playBtn4.textContent = "⏸️";
@@ -919,12 +923,14 @@
     const songTitle5 = document.getElementById("song5-title");
 
     function togglePlayPause5() {
+      stopAllRadios(player5);
         if (player5.paused) {
             player5.play();
             playBtn5.textContent = "⏸️";
         } else {
             player5.pause();
             playBtn5.textContent = "▶️";
+            
         }
     }
 
@@ -1025,6 +1031,35 @@
   opacity: 0.7;
 }
  </style>
+ 
+ 
+ <script>
+    // Almacena todas las radios en un array global
+    const allPlayers = document.querySelectorAll("audio");
+    const allPlayButtons = document.querySelectorAll("button[onclick^='togglePlayPause']"); 
+
+    function stopAllRadios(exceptPlayer) {
+        allPlayers.forEach((player) => {
+            if (player !== exceptPlayer) {
+                player.pause();
+                const btn = document.querySelector(`[onclick="togglePlayPause${player.id.replace('radio', '').replace('-player', '')}()"]`);
+                if (btn) btn.textContent = "▶️"; // Cambia el icono de los botones pausados
+            }
+        });
+    }
+
+    function togglePlayPause5() {
+        stopAllRadios(player5); // Detiene las demás radios antes de reproducir esta
+        if (player5.paused) {
+            player5.play();
+            playBtn5.textContent = "⏸️";
+        } else {
+            player5.pause();
+            playBtn5.textContent = "▶️";
+        }
+    }
+</script>
+
   
 </body>
 </html>
