@@ -1,10 +1,10 @@
 {
-  "background_color": "#000000",
-  "display": "standalone",
   "name": "Uniradio",
   "short_name": "Uniradio",
-  "description": "Escucha Uniradio en cualquier momento.",
-  "start_url": "/",
+  "description": "Escucha Uniradio en vivo.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#222222",
   "theme_color": "#ff0000",
   "icons": [
     {
