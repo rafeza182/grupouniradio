@@ -3,7 +3,7 @@
 <head>
   
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="manifest" href="/grupouniradio/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1091,7 +1091,7 @@
 
   <script>
     if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js").then(() => {
+        navigator.serviceWorker.register("/grupouniradio/sw.js").then(() => {
             console.log("Service Worker registrado");
         }).catch((error) => {
             console.log("Error al registrar Service Worker:", error);
@@ -1111,6 +1111,12 @@
             location.reload();
         }
     });
+</script>
+
+  <script>
+document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+});
 </script>
 
     
