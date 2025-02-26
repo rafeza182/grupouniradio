@@ -1098,50 +1098,6 @@
     }
 </script>
 
-  <div id="install-prompt" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; width: 90%; max-width: 350px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; font-size: 14px; color: black;">
-    📲 <b>Para instalar nuestra app en tu iPhone:</b>  
-    <br><br>1️⃣ Toca el botón <b>Compartir</b> <img src="https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/shareicon.png" width="16px">  
-    <br>2️⃣ Presiona <b>"Añadir a pantalla de inicio"</b>  
-    <br>3️⃣ ¡Listo! 🚀  
-    <br><br><button onclick="hidePrompt()" style="background: #007aff; color: white; border: none; padding: 8px 15px; border-radius: 5px; font-size: 14px;">Entendido</button>
-</div>
-
-  <script>
-function isIOS() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent);
-}
-
-function isSafari() {
-    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-}
-
-function showInstallPrompt() {
-    if (isIOS() && isSafari()) {
-        document.getElementById("install-prompt").style.display = "block";
-    }
-}
-
-function hidePrompt() {
-    document.getElementById("install-prompt").style.display = "none";
-}
-
-// Ejecutar cuando la página cargue
-document.addEventListener("DOMContentLoaded", showInstallPrompt);
-</script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if (!localStorage.getItem("appInstalled")) {
-            document.getElementById("install-prompt").style.display = "block";
-        }
-    });
-
-    function hidePrompt() {
-        document.getElementById("install-prompt").style.display = "none";
-        localStorage.setItem("appInstalled", "true"); // Guarda que ya se instaló
-    }
-</script>
-  
   <script>
     let startY = 0;
     let isRefreshing = false;
