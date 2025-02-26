@@ -1097,6 +1097,37 @@
         });
     }
 </script>
+
+  <div id="install-prompt" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 10px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+    📲 Para instalar esta web en tu pantalla de inicio:  
+    <br>1️⃣ Toca el botón **Compartir** <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Share-icon.png" width="16px">  
+    <br>2️⃣ Presiona **"Añadir a pantalla de inicio"**  
+    <br>3️⃣ ¡Listo! 🚀  
+    <br><button onclick="hidePrompt()" style="background: #007aff; color: white; border: none; padding: 5px 10px; border-radius: 5px; margin-top: 5px;">Entendido</button>
+</div>
+
+  <script>
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent);
+}
+
+function isSafari() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
+function showInstallPrompt() {
+    if (isIOS() && isSafari()) {
+        document.getElementById("install-prompt").style.display = "block";
+    }
+}
+
+function hidePrompt() {
+    document.getElementById("install-prompt").style.display = "none";
+}
+
+// Ejecutar cuando la página cargue
+document.addEventListener("DOMContentLoaded", showInstallPrompt);
+</script>
   
 </body>
 </html>
