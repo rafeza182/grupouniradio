@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="manifest" href="/grupouniradio/manifest.json">
+    <link rel="icon" type="image/png" href="https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/favicon.ico">
+
+    <base href="/grupouniradio/">
+
+
+<!-- Hace que la página se vea como app en iOS (sin barra de navegación) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Uniradio">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+
+<!-- Hace que la página se vea como app en Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000"> <!-- Color de la barra superior en Android -->
+
+    <title>MULTICOLOR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        /* Cabecera */
+        .header {
+            background: #222;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 280px;
+        }
+
+        /* Contenedor de Contacto */
+        .contact-container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        /* Información de Contacto */
+        .contact-info p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Mapa */
+        .map-container {
+            margin: 20px 0;
+        }
+
+        /* Caja del Formulario de Contacto */
+        .form-box {
+            background: #fafafa;
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        /* Imagen del Edificio */
+        .building-image img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .form-box {
+                width: 90%;
+            }
+        }
+        
+        .contenedor-mapa {
+    display: flex; /* Alinea los elementos en una fila */
+    justify-content: center; /* Centra el contenido */
+    align-items: center; /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre el mapa y la imagen */
+    width: 100%; /* Asegura que el contenedor ocupe el ancho */
+}
+
+.mapa, .imagen-edificio {
+    width: 300px;  /* Ajusta el tamaño cuadrado */
+    height: 300px; /* Asegura que sean del mismo tamaño */
+    border-radius: 10px; /* Opcional: bordes redondeados */
+    object-fit: cover; /* Evita deformaciones en la imagen */
+}
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera con Logo -->
+    <header class="header">
+        <a href="index.html">
+        <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20MultiColor.png" alt="UNIRADIO" class="logo">
+            </a>
+    </header>
+
+    <!-- Sección de Contacto -->
+    <section class="contact-container">
+        <h1>CONTÁCTANOS</h1>
+
+        <!-- Información de contacto -->
+        <div class="contact-info">
+            <p><strong>📍 Dirección:</strong> Edificio UNIRADIO, Bo. La Pista, Carretera a la UNAG, a 400mts de Texaco el Cruce. Catacamas, Olancho.</p>
+            <p><strong>📞 Teléfonos:</strong> +504 2799-3487 | +504 9938-2433</p>
+            <p><strong>📧 Correo:</strong> multicolor.impresion@gmail.com</p>
+        </div>
+        
+       <div class="contenedor-mapa">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.0714517157103!2d-85.87588256737442!3d14.841837918873042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6c72500513d6a5%3A0x8be6432f55909f66!2sUniradio!5e0!3m2!1ses!2shn!4v1740352659564!5m2!1ses!2shn" 
+        class="mapa"></iframe>
+    <img src="https://mapio.net/images-p/41541745.jpg" class="imagen-edificio">
+</div>
+    
+     <br>
+
+  <footer class="footer">
+  <div class="footer-logos">
+     <a href="https://www.facebook.com/canal21gtv" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO%20GALAXIATV.png" alt="Canal de TV">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100093297494940" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png" alt="Radio 1">
+    </a>
+    <a href="https://www.facebook.com/GalaxiaDigital899" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png" alt="Radio 2">
+    </a>
+    <a href="https://facebook.com/radio3" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png" alt="Radio 3">
+    </a>
+    <a href="https://www.facebook.com/radiozrnp" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png" alt="Radio 4">
+    </a>
+    <a href="https://facebook.com/" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp" alt="Radio 5">
+    </a>
+    <a href="https://www.facebook.com/GMulticolor" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20MultiColor.png" alt="multicolor 1">
+    </a>
+  </div>
+  <p class="footer-text">GRUPO EMPRESARIAL UNIRADIO - PIONEROS EN COMUNICACIÓN</p>
+  <p class="footer-rights">&copy; 2025 Todos los derechos reservados.</p>
+</footer>
+  
+   <style>
+  .footer {
+  text-align: center;
+  background-color: #111;
+  padding: 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.footer-logos img {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.footer-logos a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.footer-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer-rights {
+  font-size: 14px;
+  opacity: 0.7;
+}
+ </style>
+    
+
+</body>
+</html>
