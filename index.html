@@ -367,13 +367,13 @@ h3, .h3 {
 
   <br>
       
-        <h3>Radios en Vivo</h3>
+         <h3>Radios en Vivo</h3>
       <br>
         <div class="row">
             <div class="col-md-4">
                 <style>
     .radio1-container {
-         display: flex;
+    display: flex;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -383,17 +383,20 @@ h3, .h3 {
     max-width: 450px;
     height: 100px;
     color: white;
-    font-family: 'Digital-7', sans-serif;
+    font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
-    text-align: center; /* Centra el texto */
+    text-align: right; /* Centra el texto */
     }
 
     .radio1-logo {
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 80px;
         border: 100%;
-        object-fit: cover;
-        margin-right: 10px;
+        object-fit: scale;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -10;
+        
     }
 
     .radio1-info {
@@ -406,21 +409,31 @@ h3, .h3 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 180px;
+        max-width: 210px;
+        text-align: right;
     }
 
     .radio1-controls {
         display: flex;
         align-items: center;
-        gap: 10px;
+        width: 100%;
     }
 
     .radio1-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 18px;
-        cursor: pointer;
+    
+    width: 50px;  /* Ajusta el tamaño según necesites */
+    height: 50px;
+    background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    margin-left: auto;  
+        
     }
                   
     .radio1-container:hover {
@@ -429,22 +442,23 @@ h3, .h3 {
     }
                   
     .radio1-btn:hover {
-        color: #1DB954;
+        transform: scale(1.1)
     }
 
     .volume1-slider {
         width: 70px;
         cursor: pointer;
+        flex-grow: 0.9;
     }
 </style>
 
 <div class="radio1-container">
-    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png" alt="Radio1 Logo" class="radio1-logo">
-    <div class="radio1-info">
+        <div class="radio1-info">
         <div class="radio1-song" id="song1-title">Cargando...</div>
         <div class="radio1-controls">
-            <button class="radio1-btn" onclick="togglePlayPause1()">▶️</button>
+            <button class="radio1-btn" onclick="togglePlayPause1()"></button>
             <input type="range" class="volume1-slider" id="volume1-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume1(this.value)">
+            <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png" alt="Radio1 Logo" class="radio1-logo">
         </div>
     </div>
 </div>
@@ -463,10 +477,10 @@ h3, .h3 {
     stopAllRadios(player)
         if (player.paused) {
             player.play();
-            playBtn.textContent = "⏸️";
+        playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         } else {
             player.pause();
-            playBtn.textContent = "▶️";
+            playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
 
@@ -490,16 +504,14 @@ h3, .h3 {
 
     setInterval(fetchSongTitle1, 5000); // Actualiza cada 5 segundos
     fetchSongTitle1(); // Llamado inicial
-</script>
-
-              
-
+</script>             
             </div>
          
             <div class="col-md-4">
                 <style>
     .radio2-container {
-         display: flex;
+    
+    display: flex;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -509,17 +521,20 @@ h3, .h3 {
     max-width: 450px;
     height: 100px;
     color: white;
-    font-family: 'Digital-7', sans-serif;
+    font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
-    text-align: center; /* Centra el texto */
+    text-margin: 10%; /* Centra el texto */
+    
     }
 
     .radio2-logo {
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 70px;
         border: 100%;
-        object-fit: cover;
-        margin-right: 10px;
+        object-fit: scale;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -10;
     }
 
     .radio2-info {
@@ -532,7 +547,8 @@ h3, .h3 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 180px;
+        max-width: 250px;
+        text-align: right;
     }
 
     .radio2-controls {
@@ -542,11 +558,18 @@ h3, .h3 {
     }
 
     .radio2-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 18px;
-        cursor: pointer;
+    width: 50px;  /* Ajusta el tamaño según necesites */
+    height: 50px;
+    background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    margin-left: auto;  
     }
 
     .radio2-container:hover {
@@ -555,22 +578,23 @@ h3, .h3 {
     }
 
     .radio2-btn:hover {
-        color: #1DB954;
-    }
+     transform: scale(1.1)   
+     }
 
     .volume2-slider {
         width: 70px;
         cursor: pointer;
+        flex-grow: 0.9;
     }
 </style>
 
 <div class="radio2-container">
-    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png" alt="Radio2 Logo" class="radio2-logo">
-    <div class="radio2-info">
+        <div class="radio2-info">
         <div class="radio2-song" id="song2-title">Cargando...</div>
         <div class="radio2-controls">
-            <button class="radio2-btn" onclick="togglePlayPause2()">▶️</button>
+            <button class="radio2-btn" onclick="togglePlayPause2()"></button>
             <input type="range" class="volume2-slider" id="volume2-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume2(this.value)">
+           <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png" alt="Radio2 Logo" class="radio2-logo">
         </div>
     </div>
 </div>
@@ -585,14 +609,14 @@ h3, .h3 {
     const playBtn2 = document.querySelector(".radio2-btn");
     const songTitle2 = document.getElementById("song2-title");
 
-    function togglePlayPause2() {
+   function togglePlayPause2() {
     stopAllRadios(player2)
         if (player2.paused) {
             player2.play();
-            playBtn2.textContent = "⏸️";
+        playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         } else {
             player2.pause();
-            playBtn2.textContent = "▶️";
+            playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
 
@@ -622,7 +646,7 @@ h3, .h3 {
             <div class="col-md-4">
                 <style>
     .radio3-container {
-         display: flex;
+    display: flex;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -632,17 +656,19 @@ h3, .h3 {
     max-width: 450px;
     height: 100px;
     color: white;
-    font-family: 'Digital-7', sans-serif;
+    font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
-    text-align: center; /* Centra el texto */
+    text-margin: 10%; /* Centra el texto */
     }
 
     .radio3-logo {
-        width: 55px;
-        height: 50px;
+       width: 70px;
+        height: 70px;
         border: 100%;
-        object-fit: center;
-        margin-right: 10px;
+        object-fit: scale;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -10;
     }
 
     .radio3-info {
@@ -655,7 +681,8 @@ h3, .h3 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 180px;
+        max-width: 190px;
+        text-align: right;
     }
 
     .radio3-controls {
@@ -665,11 +692,18 @@ h3, .h3 {
     }
 
     .radio3-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 18px;
-        cursor: pointer;
+    width: 50px;  /* Ajusta el tamaño según necesites */
+    height: 50px;
+    background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    margin-left: auto;  
     }
 
     .radio3-container:hover {
@@ -678,22 +712,23 @@ h3, .h3 {
     }
                   
     .radio3-btn:hover {
-        color: #1DB954;
+     transform: scale(1.1)   
     }
 
     .volume3-slider {
         width: 70px;
         cursor: pointer;
-    }
+        flex-grow: 0.9;
+        }
 </style>
 
 <div class="radio3-container">
-    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png" alt="Radio3 Logo" class="radio3-logo">
     <div class="radio3-info">
         <div class="radio3-song" id="song3-title">Cargando...</div>
         <div class="radio3-controls">
-            <button class="radio3-btn" onclick="togglePlayPause3()">▶️</button>
+            <button class="radio3-btn" onclick="togglePlayPause3()"></button>
             <input type="range" class="volume3-slider" id="volume3-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume3(this.value)">
+            <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png" alt="Radio3 Logo" class="radio3-logo">
         </div>
     </div>
 </div>
@@ -712,10 +747,10 @@ h3, .h3 {
     stopAllRadios(player3)
         if (player3.paused) {
             player3.play();
-            playBtn3.textContent = "⏸️";
+        playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         } else {
             player3.pause();
-            playBtn3.textContent = "▶️";
+            playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
 
@@ -745,7 +780,7 @@ h3, .h3 {
             <div class="col-md-4">
                 <style>
     .radio4-container {
-         display: flex;
+    display: flex;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -755,17 +790,19 @@ h3, .h3 {
     max-width: 450px;
     height: 100px;
     color: white;
-    font-family: 'Digital-7', sans-serif;
+    font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
-    text-align: center; /* Centra el texto */
+    text-margin: 10%; /* Centra el texto */
     }
 
     .radio4-logo {
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 80px;
         border: 100%;
-        object-fit: cover;
-        margin-right: 10px;
+        object-fit: scale;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -10;
     }
 
     .radio4-info {
@@ -778,7 +815,8 @@ h3, .h3 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 180px;
+        max-width: 210px;
+        text-align: right;
     }
 
     .radio4-controls {
@@ -788,11 +826,18 @@ h3, .h3 {
     }
 
     .radio4-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 18px;
-        cursor: pointer;
+    width: 50px;  /* Ajusta el tamaño según necesites */
+    height: 50px;
+    background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    margin-left: auto;  
     }
 
     .radio4-container:hover {
@@ -801,22 +846,23 @@ h3, .h3 {
     }
                   
     .radio4-btn:hover {
-        color: #1DB954;
+     transform: scale(1.1)   
     }
 
     .volume4-slider {
         width: 70px;
         cursor: pointer;
+        flex-grow: 0.9;
     }
 </style>
 
 <div class="radio4-container">
-    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png" alt="Radio4 Logo" class="radio4-logo">
     <div class="radio4-info">
         <div class="radio4-song" id="song4-title">Cargando...</div>
         <div class="radio4-controls">
-            <button class="radio4-btn" onclick="togglePlayPause4()">▶️</button>
+            <button class="radio4-btn" onclick="togglePlayPause4()"></button>
             <input type="range" class="volume4-slider" id="volume4-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume4(this.value)">
+            <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png" alt="Radio4 Logo" class="radio4-logo">
         </div>
     </div>
 </div>
@@ -835,10 +881,10 @@ h3, .h3 {
     stopAllRadios(player4)
         if (player4.paused) {
             player4.play();
-            playBtn4.textContent = "⏸️";
+        playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         } else {
             player4.pause();
-            playBtn4.textContent = "▶️";
+            playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
 
@@ -868,7 +914,7 @@ h3, .h3 {
             <div class="col-md-4">
                <style>
     .radio5-container {
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -878,17 +924,19 @@ h3, .h3 {
     max-width: 450px;
     height: 100px;
     color: white;
-    font-family: 'Digital-7', sans-serif;
+    font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
-    text-align: center; /* Centra el texto */
+    text-margin: 10%; /* Centra el texto */
     }
 
     .radio5-logo {
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 70px;
         border: 100%;
-        object-fit: cover;
-        margin-right: 10px;
+        object-fit: scale;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -10;
     }
 
     .radio5-info {
@@ -901,7 +949,9 @@ h3, .h3 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 180px;
+        max-width: 190px;
+        text-align: right;
+        
     }
 
     .radio5-controls {
@@ -911,11 +961,18 @@ h3, .h3 {
     }
 
     .radio5-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 18px;
-        cursor: pointer;
+    width: 50px;  /* Ajusta el tamaño según necesites */
+    height: 50px;
+    background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    margin-left: auto;  
     }
 
     .radio5-container:hover {
@@ -924,12 +981,13 @@ h3, .h3 {
     }
 
     .radio5-btn:hover {
-        color: #1DB954;
+     transform: scale(1.1)   
     }
 
     .volume5-slider {
         width: 70px;
         cursor: pointer;
+        flex-grow: 0.9;
     }
 
     .divider5 {
@@ -940,12 +998,12 @@ h3, .h3 {
 </style>
 
 <div class="radio5-container">
-    <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp" alt="Radio5 Logo" class="radio5-logo">
     <div class="radio5-info">
         <div class="radio5-song" id="song5-title">Cargando...</div>
         <div class="radio5-controls">
-            <button class="radio5-btn" onclick="togglePlayPause5()">▶️</button>
+            <button class="radio5-btn" onclick="togglePlayPause5()"></button>
             <input type="range" class="volume5-slider" id="volume5-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume5(this.value)">
+            <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp" alt="Radio5 Logo" class="radio5-logo">
         </div>
     </div>
 </div>
@@ -961,14 +1019,13 @@ h3, .h3 {
     const songTitle5 = document.getElementById("song5-title");
 
     function togglePlayPause5() {
-      stopAllRadios(player5);
+    stopAllRadios(player5)
         if (player5.paused) {
             player5.play();
-            playBtn5.textContent = "⏸️";
+        playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         } else {
             player5.pause();
-            playBtn5.textContent = "▶️";
-            
+            playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
 
@@ -1081,23 +1138,22 @@ h3, .h3 {
             if (player !== exceptPlayer) {
                 player.pause();
                 const btn = document.querySelector(`[onclick="togglePlayPause${player.id.replace('radio', '').replace('-player', '')}()"]`);
-                if (btn) btn.textContent = "▶️"; // Cambia el icono de los botones pausados
+                if (btn) btn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')"; // Cambia el icono de los botones pausados
             }
         });
     }
 
     function togglePlayPause5() {
-        stopAllRadios(player5); // Detiene las demás radios antes de reproducir esta
+    stopAllRadios(player5)
         if (player5.paused) {
             player5.play();
-            playBtn5.textContent = "⏸️";
+        playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         } else {
             player5.pause();
-            playBtn5.textContent = "▶️";
+            playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
 </script>
-
   <script>
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/grupouniradio/sw.js").then(() => {
