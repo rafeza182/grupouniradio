@@ -65,34 +65,6 @@
             margin: 20px 0;
         }
 
-        /* Caja del Formulario de Contacto */
-        .form-box {
-            background: #fafafa;
-            width: 60%;
-            margin: auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        input, textarea {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        textarea {
-            height: 100px;
-        }
 
         button {
             background: #222;
@@ -136,6 +108,61 @@
     border-radius: 10px; /* Opcional: bordes redondeados */
     object-fit: cover; /* Evita deformaciones en la imagen */
 }
+
+ /* Contenedor principal */
+        .carousel-container {
+            width: 100%;
+            heigh: 200px;
+            overflow: hidden;
+            background: white;
+            padding: 20px 0;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        /* Carrusel de imágenes */
+		.carousel {
+   			display: flex;
+   			gap: 10px;
+    		width: max-content;
+    		animation: scroll 40s linear infinite; /* Animación infinita */
+		}
+
+        /* Imágenes dentro del carrusel */
+        .carousel img {
+            width: auto;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            border-radius: 10px;
+        }
+
+        /* Efecto al pasar el mouse */
+        .carousel img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    animation-play-state: paused; /* Pausa la animación al pasar el mouse */
+}
+
+        /* Animación de desplazamiento */
+        @keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Se mueve hasta la mitad del contenido duplicado */
+    }
+}
+
+.carousel-container:hover .carousel {
+    animation-play-state: paused; /* Pausa el carrusel cuando el mouse está encima */
+}
+
+ .dividerlineal {
+           margin: 40px 50px;
+           border-top: 6px solid #bbb;
+        }
+        
     </style>
 </head>
 <body>
@@ -158,6 +185,48 @@
             <p><strong>📧 Correo:</strong> multicolor.impresion@gmail.com</p>
         </div>
         
+<div class="dividerlineal"></div>
+                      
+        <div class="carousel-container">
+        <div id="carousel" class="carousel"></div>
+    </div>
+
+    <script>
+        const repoURL = "https://rafeza182.github.io/grupouniradio/imagenescarrusel/";
+        const maxImages = 30; // Máximo de imágenes que podrías tener
+
+        async function checkImageExists(url) {
+            try {
+                const response = await fetch(url, { method: "HEAD" });
+                return response.ok;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function loadCarousel() {
+            const carousel = document.getElementById("carousel");
+
+            for (let i = 1; i <= maxImages; i++) {
+                const imgURL = `${repoURL}imagen${i}.jpg`;
+                const exists = await checkImageExists(imgURL);
+
+                if (exists) {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = imgURL;
+                    imgElement.alt = `Imagen ${i}`;
+                    carousel.appendChild(imgElement);
+                    console.log(`Cargando: ${imgURL}`); // 👀 Ver qué imágenes se están agregando
+
+                }
+            }
+        }
+
+        loadCarousel();
+    </script>
+        
+          <br>
+            <br>
        <div class="contenedor-mapa">
     <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.0714517157103!2d-85.87588256737442!3d14.841837918873042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6c72500513d6a5%3A0x8be6432f55909f66!2sUniradio!5e0!3m2!1ses!2shn!4v1740352659564!5m2!1ses!2shn" 
@@ -233,6 +302,8 @@
   font-size: 14px;
   opacity: 0.7;
 }
+
+
  </style>
     
 
