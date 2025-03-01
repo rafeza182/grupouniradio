@@ -194,6 +194,7 @@ h3, .h3 {
     }
 
     setInterval(changeImage, 5000); // Cambia cada 5 segundos
+  
 </script>
   
     <div class="container">
@@ -231,6 +232,20 @@ h3, .h3 {
   .menu a:hover::after {
     width: 100%;
   }
+
+        @media all and (display-mode: standalone) {
+    /* Estilos para la PWA instalada */
+    .bottom-nav {
+        display: flex;
+    }
+}
+
+@media all and (display-mode: browser) {
+    /* Estilos para la PWA en el navegador */
+    .bottom-nav {
+        display: none;
+    }
+}
 </style>
 
 <nav class="menu">
