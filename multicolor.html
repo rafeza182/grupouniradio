@@ -96,6 +96,7 @@
         
         .contenedor-mapa {
     display: flex; /* Alinea los elementos en una fila */
+    flex-wrap: wrap; /* Permite que los elementos bajen en pantallas pequeñas */
     justify-content: center; /* Centra el contenido */
     align-items: center; /* Alinea verticalmente */
     gap: 10px; /* Espacio entre el mapa y la imagen */
@@ -107,6 +108,12 @@
     height: 300px; /* Asegura que sean del mismo tamaño */
     border-radius: 10px; /* Opcional: bordes redondeados */
     object-fit: cover; /* Evita deformaciones en la imagen */
+}
+
+@media (max-width: 768px) {
+    .contenedor-mapa {
+        flex-direction: column; /* En pantallas pequeñas, los coloca uno debajo del otro */
+    }
 }
 
  /* Contenedor principal */
@@ -309,3 +316,4 @@
 
 </body>
 </html>
+
