@@ -137,6 +137,35 @@ h2, .h2 {
 h3, .h3 {
    font-size:35px;
 }
+      .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff; /* Color sólido, puedes cambiarlo */
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bottom-nav a {
+    text-align: center;
+    flex: 1;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.bottom-nav img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}
       
     </style>
 </head>
@@ -1183,5 +1212,24 @@ document.addEventListener('gesturestart', function (e) {
 });
 </script>
     <script src="menu.js"></script>
+  <div class="bottom-nav">
+    <a href="index.html">
+        <img src="icons/home.svg" alt="Home">
+        <span>Home</span>
+    </a>
+    <a href="contacto.html">
+        <img src="icons/contacto.svg" alt="Contacto">
+        <span>Contacto</span>
+    </a>
+    <a href="multicolor.html">
+        <img src="icons/multicolor.svg" alt="Multicolor">
+        <span>Categories</span>
+    </a>
+    <a href="nosotros.html">
+        <img src="icons/nosotros.svg" alt="Nosotros">
+        <span>Nosotros</span>
+    </a>
+</div>
+  
 </body>
 </html>
