@@ -40,3 +40,13 @@ style.innerHTML = `
     }
 `;
 document.head.appendChild(style);
+
+document.addEventListener("DOMContentLoaded", function () {
+    const homeButton = document.querySelector('.bottom-nav a[href="index.html"]');
+    if (homeButton) {
+        homeButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Evita que recargue si ya está en la página
+            location.reload();
+        });
+    }
+});
