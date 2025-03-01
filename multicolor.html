@@ -125,7 +125,21 @@
             padding: 20px 0;
             position: relative;
             white-space: nowrap;
+            overflow-x: auto; /* Habilita el scroll horizontal */
+            display: flex;
+            scrollbar-width: none; /* Oculta scrollbar en Firefox */
+            -ms-overflow-style: none; /* Oculta scrollbar en IE y Edge */
         }
+        
+        .carousel-container::-webkit-scrollbar {
+    display: none; /* Oculta scrollbar en Chrome y Safari */
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        animation: none; /* Desactiva la animación en móviles */
+    }
+}
 
         /* Carrusel de imágenes */
 		.carousel {
