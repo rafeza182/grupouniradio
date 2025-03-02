@@ -184,21 +184,8 @@
            border-top: 6px solid #bbb;
         }
 
-	      @media all and (display-mode: standalone) {
-    /* Estilos para la PWA instalada */
-    .bottom-nav {
-        display: flex;
-    }
-}
 
-@media all and (display-mode: browser) {
-    /* Estilos para la PWA en el navegador */
-    .bottom-nav {
-        display: none;
-    }
-}
-
-	       .bottom-nav {
+.bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -369,6 +356,19 @@
   opacity: 0.7;
 }
 
+      @media all and (display-mode: standalone) {
+    /* Estilos para la PWA instalada */
+    .bottom-nav {
+        display: flex;
+    }
+}
+
+@media all and (display-mode: browser) {
+    /* Estilos para la PWA en el navegador */
+    .bottom-nav {
+        display: none;
+    }
+}
 
  </style>
 	    <div class="bottom-nav">
