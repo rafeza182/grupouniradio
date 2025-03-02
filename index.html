@@ -1244,6 +1244,10 @@ document.addEventListener('gesturestart', function (e) {
         <span>Nosotros</span>
     </a>
 </div>
+
+  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+  document.querySelector('.menu').style.display = 'none';
+}
   
 </body>
 </html>
