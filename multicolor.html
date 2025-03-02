@@ -183,6 +183,51 @@
            margin: 40px 50px;
            border-top: 6px solid #bbb;
         }
+
+	      @media all and (display-mode: standalone) {
+    /* Estilos para la PWA instalada */
+    .bottom-nav {
+        display: flex;
+    }
+}
+
+@media all and (display-mode: browser) {
+    /* Estilos para la PWA en el navegador */
+    .bottom-nav {
+        display: none;
+    }
+}
+
+	       .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Color sólido, puedes cambiarlo */
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bottom-nav a {
+    text-align: center;
+    flex: 1;
+    color: #000000;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.bottom-nav img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+	    
         
     </style>
 </head>
@@ -326,7 +371,24 @@
 
 
  </style>
-	    <script src="menu.js"></script>
+	    <div class="bottom-nav">
+    <a href="index.html">
+        <img src="icons/home.svg" alt="Home">
+        <span>Home</span>
+    </a>
+    <a href="contacto.html">
+        <img src="icons/contacto.svg" alt="Contacto">
+        <span>Contacto</span>
+    </a>
+    <a href="multicolor.html">
+        <img src="icons/multicolor.svg" alt="Multicolor">
+        <span>Multicolor</span>
+    </a>
+    <a href="index.html">
+        <img src="icons/nosotros.svg" alt="Nosotros">
+        <span>Nosotros</span>
+    </a>
+</div>
 
 </body>
 </html>
