@@ -378,6 +378,7 @@
 	
  </style>
 	    <script>
+    loadCarousel(); // Ya está en tu código
 
     const carouselContainer = document.querySelector(".carousel-container");
 
@@ -385,8 +386,8 @@
         clearTimeout(carouselContainer.timeout);
         
         carouselContainer.timeout = setTimeout(() => {
-            carouselContainer.scrollLeft = 0; // Vuelve al inicio después de 2 segundos
-        }, 2000);
+            carouselContainer.scrollLeft = 0; // Vuelve al inicio después de 15 segundos
+        }, 15000);
     });
 </script>
 
