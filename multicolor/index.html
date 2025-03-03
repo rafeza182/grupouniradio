@@ -137,10 +137,9 @@
 
 @media (max-width: 768px) {
     .carousel {
-        animation: none; /* Desactiva la animación en móviles */
+        animation: scroll 40s linear infinite; /* Mantiene la animación en móviles */
     }
 }
-
         /* Carrusel de imágenes */
 		.carousel {
    			display: flex;
@@ -376,8 +375,22 @@
         display: none;
     }
 }
-
+	
  </style>
+	    <script>
+    loadCarousel(); // Ya está en tu código
+
+    const carouselContainer = document.querySelector(".carousel-container");
+
+    carouselContainer.addEventListener("scroll", () => {
+        clearTimeout(carouselContainer.timeout);
+        
+        carouselContainer.timeout = setTimeout(() => {
+            carouselContainer.scrollLeft = 0; // Vuelve al inicio después de 2 segundos
+        }, 2000);
+    });
+</script>
+
 	    <div class="bottom-nav">
     <a href="/">
         <img src="icons/home.svg" alt="Home">
