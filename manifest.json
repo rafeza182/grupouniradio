@@ -2,7 +2,7 @@
   "name": "Uniradio",
   "short_name": "Uniradio",
   "description": "Escucha Uniradio en vivo.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#222222",
