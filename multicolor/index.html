@@ -390,7 +390,7 @@
     function startAutoScroll() {
         autoScrollInterval = setInterval(() => {
             if (!isUserScrolling) {
-                carouselContainer.scrollLeft += 2; // Ajusta la velocidad del scroll automático
+                carouselContainer.scrollLeft += 0.5; // Ajusta la velocidad del scroll automático
                 if (carouselContainer.scrollLeft >= carousel.scrollWidth - carouselContainer.clientWidth) {
                     carouselContainer.scrollLeft = 0; // Vuelve al inicio cuando llegue al final
                 }
@@ -413,7 +413,7 @@
         setTimeout(() => {
             isUserScrolling = false;
             startAutoScroll();
-        }, 3000); // 3 segundos de pausa antes de reanudar el scroll automático
+        }, 10000); // 10 segundos de pausa antes de reanudar el scroll automático
     });
 
     startAutoScroll(); // Inicia el desplazamiento automático al cargar la página
