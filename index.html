@@ -1265,13 +1265,13 @@ async function fetchSongTitle(url, songTitleId, defaultText) {
             }
         } else {
             // Si no hay nueva canción en los últimos 15 segundos, muestra el nombre de la radio
-            if (Date.now() - (lastUpdateTime[songTitleId] || 0) > 150000) {
+            if (Date.now() - (lastUpdateTime[songTitleId] || 0) > 250000) {
                 songTitleElement.textContent = defaultText;
             }
         }
     } catch (error) {
         // Si hay un error y no ha pasado mucho tiempo, sigue mostrando la última canción válida
-        if (Date.now() - (lastUpdateTime[songTitleId] || 0) > 150000) {
+        if (Date.now() - (lastUpdateTime[songTitleId] || 0) > 250000) {
             songTitleElement.textContent = defaultText;
         }
         console.error(`❌ Error obteniendo título de canción para ${defaultText}:`, error);
