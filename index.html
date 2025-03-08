@@ -1243,12 +1243,6 @@ document.addEventListener('gesturestart', function (e) {
     const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}&timestamp=${new Date().getTime()}`;
 
     try {
-        async function fetchSongTitle(url, songTitleId, defaultText) {
-    const songTitleElement = document.getElementById(songTitleId);
-    let lastSongTitle = songTitleElement.textContent; // Guarda el último título mostrado
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}&timestamp=${new Date().getTime()}`;
-
-    try {
         const response = await fetch(proxyUrl, { cache: "no-store" });
 
         if (!response.ok) {
