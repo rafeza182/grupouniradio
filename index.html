@@ -349,6 +349,31 @@ h3, .h3 {
 </head>
 <body>
 
+  <script>
+    function updateMediaSession(player, stationName, logoUrl) {
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: stationName,
+                artist: "Grupo Uniradio",
+                album: "En Vivo",
+                artwork: [
+                    { src: logoUrl, sizes: "96x96", type: "image/png" },
+                    { src: logoUrl, sizes: "128x128", type: "image/png" },
+                    { src: logoUrl, sizes: "192x192", type: "image/png" },
+                    { src: logoUrl, sizes: "256x256", type: "image/png" },
+                    { src: logoUrl, sizes: "512x512", type: "image/png" }
+                ]
+            });
+
+            // Configurar controles multimedia
+            navigator.mediaSession.setActionHandler("play", () => { player.play(); });
+            navigator.mediaSession.setActionHandler("pause", () => { player.pause(); });
+            navigator.mediaSession.setActionHandler("stop", () => { player.pause(); });
+        }
+    }
+</script>
+
+
     <!-- 🔹 Ticker de Noticias con Imágenes -->
     <div class="news-ticker">
         <div class="news-container">
@@ -525,6 +550,8 @@ h3, .h3 {
         if (player.paused) {
             player.play();
         playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        updateMediaSession(player, "Radio HRKN", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png");
+
         } else {
             player.pause();
             playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
@@ -661,6 +688,8 @@ h3, .h3 {
         if (player2.paused) {
             player2.play();
         playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        updateMediaSession(player2, "Radio Galaxia Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png");
+
         } else {
             player2.pause();
             playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
@@ -795,6 +824,8 @@ h3, .h3 {
         if (player3.paused) {
             player3.play();
         playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        updateMediaSession(player3, "Futura Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png");
+          
         } else {
             player3.pause();
             playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
@@ -929,6 +960,8 @@ h3, .h3 {
         if (player4.paused) {
             player4.play();
         playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        updateMediaSession(player4, "Radio Z Rock n Pop", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png");
+          
         } else {
             player4.pause();
             playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
@@ -1069,6 +1102,8 @@ h3, .h3 {
         if (player5.paused) {
             player5.play();
         playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        updateMediaSession(player5, "Radio Musical", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp");
+          
         } else {
             player5.pause();
             playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
