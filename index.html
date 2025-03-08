@@ -564,22 +564,6 @@ h3, .h3 {
         player.volume = value;
     }
 
-    async function fetchSongTitle1() {
-        try {
-            const response = await fetch("https://sonicpanelpro.com:8040/stats?json=1");
-            const data = await response.json();
-            if (data && data.songtitle) {
-                songTitle.textContent = data.songtitle;
-            } else {
-                songTitle.textContent = "Artista Desconocido";
-            }
-        } catch (error) {
-            songTitle.textContent = "La Voz de Olancho";
-        }
-    }
-
-    setInterval(fetchSongTitle1, 5000); // Actualiza cada 5 segundos
-    fetchSongTitle1(); // Llamado inicial
 </script>             
             </div>
          
@@ -704,22 +688,6 @@ h3, .h3 {
         player2.volume = value;
     }
 
-    async function fetchSongTitle2() {
-        try {
-            const response2 = await fetch("https://sonicpanelpro.com:8020/stats?json=1");
-            const data2 = await response2.json();
-            if (data2 && data2.songtitle) {
-                songTitle2.textContent = data2.songtitle;
-            } else {
-                songTitle2.textContent = "Artista Desconocido";
-            }
-        } catch (error) {
-            songTitle2.textContent = "Radio Galaxia Digital";
-        }
-    }
-
-    setInterval(fetchSongTitle2, 5000); // Actualiza cada 5 segundos
-    fetchSongTitle2(); // Llamado inicial
 </script>
 
             </div>
@@ -842,22 +810,6 @@ h3, .h3 {
         player3.volume = value;
     }
 
-    async function fetchSongTitle3() {
-        try {
-            const response3 = await fetch("https://sonicpanelpro.com:8042/stats?json=1");
-            const data3 = await response3.json();
-            if (data3 && data3.songtitle) {
-                songTitle3.textContent = data3.songtitle;
-            } else {
-                songTitle3.textContent = "Artista Desconocido";
-            }
-        } catch (error) {
-            songTitle3.textContent = "Futura Digital";
-        }
-    }
-
-    setInterval(fetchSongTitle3, 5000); // Actualiza cada 5 segundos
-    fetchSongTitle3(); // Llamado inicial
 </script>
 
             </div>
@@ -981,22 +933,7 @@ h3, .h3 {
         player4.volume = value;
     }
 
-    async function fetchSongTitle4() {
-        try {
-            const response4 = await fetch("https://sonicpanelpro.com:8044/stats?json=1");
-            const data4 = await response4.json();
-            if (data4 && data4.songtitle) {
-                songTitle4.textContent = data4.songtitle;
-            } else {
-                songTitle4.textContent = "Artista Desconocido";
-            }
-        } catch (error) {
-            songTitle4.textContent = "Radio Z RocknPop";
-        }
-    }
-
-    setInterval(fetchSongTitle4, 5000); // Actualiza cada 5 segundos
-    fetchSongTitle4(); // Llamado inicial
+  
 </script>
 
             </div>
@@ -1126,22 +1063,6 @@ h3, .h3 {
         player5.volume = value;
     }
 
-      async function fetchSongTitle5() {
-        try {
-            const response5 = await fetch("https://sonicpanelpro.com:8046/stats?json=1");
-            const data5 = await response5.json();
-            if (data5 && data5.songtitle) {
-                songTitle5.textContent = data5.songtitle;
-            } else {
-                songTitle5.textContent = "Desconocido";
-            }
-        } catch (error) {
-            songTitle5.textContent = "Radio Musical";
-        }
-    }
-
-    setInterval(fetchSongTitle5, 5000); // Actualiza cada 5 segundos
-    fetchSongTitle5(); // Llamado inicial
 </script>
 
             </div>
@@ -1312,6 +1233,35 @@ document.addEventListener('gesturestart', function (e) {
   if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
     document.querySelector('.menu').style.display = 'none';
   }
+</script>
+
+
+<script>
+  async function fetchSongTitle(url, songTitleId, defaultText) {
+    const songTitleElement = document.getElementById(songTitleId);
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data && data.songtitle) {
+            songTitleElement.textContent = data.songtitle;
+        } else {
+            songTitleElement.textContent = defaultText; // Si no hay datos, muestra el nombre de la radio
+        }
+    } catch (error) {
+        songTitleElement.textContent = defaultText; // Si hay error, muestra el nombre de la radio
+        console.error(`Error obteniendo título de canción para ${defaultText}:`, error);
+    }
+}
+  setInterval(() => {
+    fetchSongTitle("https://sonicpanelpro.com:8040/stats?json=1", "song1-title", "La Voz de Olancho");
+    fetchSongTitle("https://sonicpanelpro.com:8020/stats?json=1", "song2-title", "Radio Galaxia Digital");
+    fetchSongTitle("https://sonicpanelpro.com:8042/stats?json=1", "song3-title", "Futura Digital");
+    fetchSongTitle("https://sonicpanelpro.com:8044/stats?json=1", "song4-title", "Radio Z Rock n Pop");
+    fetchSongTitle("https://sonicpanelpro.com:8046/stats?json=1", "song5-title", "Radio Musical");
+}, 5000); // Se actualiza cada 5 segundos
+  
 </script>
   
 </body>
