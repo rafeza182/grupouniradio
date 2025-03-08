@@ -1242,25 +1242,34 @@ document.addEventListener('gesturestart', function (e) {
 
     try {
         const response = await fetch(url);
+        
+        // Si el servidor bloquea la petición, lanzar un error
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
+        console.log(`✅ Datos obtenidos de ${defaultText}:`, data); // 🔍 Verifica el JSON en la consola
 
         if (data && data.songtitle) {
             songTitleElement.textContent = data.songtitle;
         } else {
-            songTitleElement.textContent = defaultText; // Si no hay datos, muestra el nombre de la radio
+            songTitleElement.textContent = defaultText; // Si no hay canción, muestra el nombre de la radio
         }
     } catch (error) {
-        songTitleElement.textContent = defaultText; // Si hay error, muestra el nombre de la radio
-        console.error(`Error obteniendo título de canción para ${defaultText}:`, error);
+        songTitleElement.textContent = defaultText;
+        console.error(`❌ Error obteniendo título de canción para ${defaultText}:`, error);
     }
 }
-  setInterval(() => {
+
+ setInterval(() => {
     fetchSongTitle("https://sonicpanelpro.com:8040/stats?json=1", "song1-title", "La Voz de Olancho");
     fetchSongTitle("https://sonicpanelpro.com:8020/stats?json=1", "song2-title", "Radio Galaxia Digital");
     fetchSongTitle("https://sonicpanelpro.com:8042/stats?json=1", "song3-title", "Futura Digital");
     fetchSongTitle("https://sonicpanelpro.com:8044/stats?json=1", "song4-title", "Radio Z Rock n Pop");
     fetchSongTitle("https://sonicpanelpro.com:8046/stats?json=1", "song5-title", "Radio Musical");
 }, 5000); // Se actualiza cada 5 segundos
+
   
 </script>
   
