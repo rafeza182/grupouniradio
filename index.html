@@ -1177,19 +1177,40 @@ h3, .h3 {
  
  
  <script>
-    // Almacena todas las radios en un array global
     const allPlayers = document.querySelectorAll("audio");
-    const allPlayButtons = document.querySelectorAll("button[onclick^='togglePlayPause']"); 
+    const allPlayButtons = document.querySelectorAll("button[onclick^='togglePlayPause']");
+
+    let lastPlayedRadio = null; // Guarda la última radio que estaba sonando
 
     function stopAllRadios(exceptPlayer) {
         allPlayers.forEach((player) => {
             if (player !== exceptPlayer) {
                 player.pause();
                 const btn = document.querySelector(`[onclick="togglePlayPause${player.id.replace('radio', '').replace('-player', '')}()"]`);
-                if (btn) btn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')"; // Cambia el icono de los botones pausados
+                if (btn) btn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')"; // Cambia el icono
             }
         });
     }
+
+    function handleAudioInterruption(event) {
+        if (!document.hidden) return;
+        allPlayers.forEach(player => {
+            if (!player.paused) {
+                lastPlayedRadio = player; // Guarda qué radio estaba sonando
+                player.pause();
+            }
+        });
+    }
+
+    function handleVisibilityChange() {
+        if (!document.hidden && lastPlayedRadio) {
+            lastPlayedRadio.play();
+            lastPlayedRadio = null; // Resetea la variable después de reanudar
+        }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("pause", handleAudioInterruption);
 
     function togglePlayPause5() {
     stopAllRadios(player5)
@@ -1202,6 +1223,7 @@ h3, .h3 {
         }
     }
 </script>
+  
   <script>
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/grupouniradio/sw.js").then(() => {
