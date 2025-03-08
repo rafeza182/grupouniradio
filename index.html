@@ -550,12 +550,12 @@ h3, .h3 {
         if (player.paused) {
             player.load();
             player.play();
+            player.currentTime = 0;
         playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         updateMediaSession(player, "Radio HRKN", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png");
 
         } else {
             player.pause();
-            player.src = player.src;
             playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
@@ -690,12 +690,12 @@ h3, .h3 {
         if (player2.paused) {
             player2.load();
             player2.play();
+            player2.currentTime = 0;
         playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         updateMediaSession(player2, "Radio Galaxia Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png");
 
         } else {
             player2.pause();
-            player2.src = player2.src;
             playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
@@ -828,12 +828,12 @@ h3, .h3 {
         if (player3.paused) {
             player3.load();       
             player3.play();
+            player3.currentTime = 0;
         playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         updateMediaSession(player3, "Futura Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png");
           
         } else {
             player3.pause();
-            player3.src = player3.src;
             playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
@@ -964,15 +964,15 @@ h3, .h3 {
     function togglePlayPause4() {
     stopAllRadios(player4)
         if (player4.paused) {
-            player.load();
+            player4.load();
             player4.play();
+            player4.currentTime = 0;
         playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         navigator.mediaSession.metadata = null; // Resetea antes de actualizar
         updateMediaSession(player4, "Radio Z Rock n Pop", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ500x500.png");
           
         } else {
             player4.pause();
-            player4.src = player4.src;
             playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
@@ -1118,7 +1118,6 @@ h3, .h3 {
           
         } else {
             player5.pause();
-            player5.src = player5.src;
             playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
         }
     }
@@ -1260,17 +1259,7 @@ h3, .h3 {
     document.addEventListener("visibilitychange", handleVisibilityChange);
     document.addEventListener("pause", handleAudioInterruption);
 
-    function togglePlayPause5() {
-    stopAllRadios(player5)
-        if (player5.paused) {
-            player5.play();
-        playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
-        } else {
-            player5.pause();
-            playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png')";
-        }
-    }
-</script>
+   </script>
   
   <script>
     if ("serviceWorker" in navigator) {
