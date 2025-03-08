@@ -1239,22 +1239,24 @@ document.addEventListener('gesturestart', function (e) {
 <script>
   async function fetchSongTitle(url, songTitleId, defaultText) {
     const songTitleElement = document.getElementById(songTitleId);
+    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(url);
 
     try {
-        const response = await fetch(url);
-        
-        // Si el servidor bloquea la petición, lanzar un error
+        const response = await fetch(proxyUrl);
+
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log(`✅ Datos obtenidos de ${defaultText}:`, data); // 🔍 Verifica el JSON en la consola
+        const parsedData = JSON.parse(data.contents); // Convierte el JSON recibido en un objeto usable
 
-        if (data && data.songtitle) {
-            songTitleElement.textContent = data.songtitle;
+        console.log(`✅ Datos obtenidos de ${defaultText}:`, parsedData);
+
+        if (parsedData && parsedData.songtitle) {
+            songTitleElement.textContent = parsedData.songtitle;
         } else {
-            songTitleElement.textContent = defaultText; // Si no hay canción, muestra el nombre de la radio
+            songTitleElement.textContent = defaultText;
         }
     } catch (error) {
         songTitleElement.textContent = defaultText;
