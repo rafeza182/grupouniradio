@@ -1239,22 +1239,28 @@ document.addEventListener('gesturestart', function (e) {
 <script>
   async function fetchSongTitle(url, songTitleId, defaultText) {
     const songTitleElement = document.getElementById(songTitleId);
-    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(url);
+    let lastSongTitle = songTitleElement.textContent; // Guarda el último título mostrado
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}&timestamp=${new Date().getTime()}`;
 
     try {
-        const response = await fetch(proxyUrl);
+        const response = await fetch(proxyUrl, { cache: "no-store" });
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        const parsedData = JSON.parse(data.contents); // Convierte el JSON recibido en un objeto usable
-
-        console.log(`✅ Datos obtenidos de ${defaultText}:`, parsedData);
+        const parsedData = JSON.parse(data.contents); // Convierte el JSON en objeto usable
 
         if (parsedData && parsedData.songtitle) {
-            songTitleElement.textContent = parsedData.songtitle;
+            let newSongTitle = parsedData.songtitle;
+
+            // Solo actualiza si el título ha cambiado
+            if (newSongTitle !== lastSongTitle) {
+                songTitleElement.textContent = newSongTitle;
+                console.log(`🎵 Nueva canción en ${defaultText}: ${newSongTitle}`);
+                lastSongTitle = newSongTitle; // Actualiza el último título mostrado
+            }
         } else {
             songTitleElement.textContent = defaultText;
         }
