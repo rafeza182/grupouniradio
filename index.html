@@ -1237,9 +1237,11 @@ document.addEventListener('gesturestart', function (e) {
 
 
 <script>
-  async function fetchSongTitle(url, songTitleId, defaultText) {
+   const lastValidSongTitle = {}; // Almacena la última canción válida de cada radio
+const lastUpdateTime = {}; // Almacena el último tiempo de actualización
+
+async function fetchSongTitle(url, songTitleId, defaultText) {
     const songTitleElement = document.getElementById(songTitleId);
-    let lastSongTitle = songTitleElement.textContent; // Guarda el último título mostrado
     const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}&timestamp=${new Date().getTime()}`;
 
     try {
@@ -1253,23 +1255,28 @@ document.addEventListener('gesturestart', function (e) {
         const parsedData = JSON.parse(data.contents); // Convierte el JSON en objeto usable
 
         if (parsedData && parsedData.songtitle) {
-            let newSongTitle = parsedData.songtitle;
+            let newSongTitle = parsedData.songtitle.trim();
 
-            // Solo actualiza si el título ha cambiado
-            if (newSongTitle !== lastSongTitle) {
+            if (newSongTitle && newSongTitle !== lastValidSongTitle[songTitleId]) {
                 songTitleElement.textContent = newSongTitle;
+                lastValidSongTitle[songTitleId] = newSongTitle;
+                lastUpdateTime[songTitleId] = Date.now(); // Guarda el tiempo de la última actualización
                 console.log(`🎵 Nueva canción en ${defaultText}: ${newSongTitle}`);
-                lastSongTitle = newSongTitle; // Actualiza el último título mostrado
             }
         } else {
-            songTitleElement.textContent = defaultText;
+            // Si no hay nueva canción en los últimos 15 segundos, muestra el nombre de la radio
+            if (Date.now() - (lastUpdateTime[songTitleId] || 0) > 150000) {
+                songTitleElement.textContent = defaultText;
+            }
         }
     } catch (error) {
-        songTitleElement.textContent = defaultText;
+        // Si hay un error y no ha pasado mucho tiempo, sigue mostrando la última canción válida
+        if (Date.now() - (lastUpdateTime[songTitleId] || 0) > 150000) {
+            songTitleElement.textContent = defaultText;
+        }
         console.error(`❌ Error obteniendo título de canción para ${defaultText}:`, error);
     }
 }
-
 
  setInterval(() => {
     fetchSongTitle("https://sonicpanelpro.com:8040/stats?json=1", "song1-title", "La Voz de Olancho");
