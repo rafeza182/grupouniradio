@@ -1111,6 +1111,7 @@ h3, .h3 {
         if (player5.paused) {
             player5.load();
             player5.play();
+            player5.currentTime = 0; // Evita cortes de buffer
         playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         navigator.mediaSession.metadata = null; // Resetea antes de actualizar
         updateMediaSession(player5, "Radio Musical", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-png.png");
