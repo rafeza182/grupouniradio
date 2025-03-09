@@ -566,7 +566,7 @@ h3, .h3 {
             player.currentTime = 0;
         playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         const currentSongTitle = document.getElementById("song1-title").textContent;  
-        updateMediaSession(player, "Radio HRKN", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png");
+        updateMediaSession(player, "Radio HRKN", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png", currentSongTitle);
 
         } else {
             player.pause();
@@ -703,7 +703,7 @@ h3, .h3 {
             player2.currentTime = 0;
         playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         const currentSongTitle = document.getElementById("song2-title").textContent;
-        updateMediaSession(player2, "Radio Galaxia Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png");
+        updateMediaSession(player2, "Radio Galaxia Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png", currentSongTitle);
 
         } else {
             player2.pause();
@@ -839,7 +839,7 @@ h3, .h3 {
             player3.currentTime = 0;
         playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         const currentSongTitle = document.getElementById("song3-title").textContent;
-        updateMediaSession(player3, "Futura Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png");
+        updateMediaSession(player3, "Futura Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png", currentSongTitle);
           
         } else {
             player3.pause();
@@ -976,7 +976,7 @@ h3, .h3 {
         playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         navigator.mediaSession.metadata = null; // Resetea antes de actualizar
         const currentSongTitle = document.getElementById("song4-title").textContent;
-        updateMediaSession(player4, "Radio Z Rock n Pop", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ500x500.png");
+        updateMediaSession(player4, "Radio Z Rock n Pop", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ500x500.png", currentSongTitle);
           
         } else {
             player4.pause();
@@ -1121,7 +1121,7 @@ h3, .h3 {
         playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         navigator.mediaSession.metadata = null; // Resetea antes de actualizar
         const currentSongTitle = document.getElementById("song5-title").textContent;
-        updateMediaSession(player5, "Radio Musical", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-png.png");
+        updateMediaSession(player5, "Radio Musical", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-png.png", currentSongTitle);
           
         } else {
             player5.pause();
