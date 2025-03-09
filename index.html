@@ -1307,10 +1307,10 @@ document.addEventListener('gesturestart', function (e) {
 
 
 <script>
-   const lastValidSongTitle = {}; // Almacena la última canción válida de cada radio
+const lastValidSongTitle = {}; // Almacena la última canción válida de cada radio
 const lastUpdateTime = {}; // Almacena el último tiempo de actualización
 
-async function fetchSongTitle(url, songTitleId, defaultText) {
+async function fetchSongTitle(url, songTitleId, defaultText, player, stationName, logoUrl) {
     const songTitleElement = document.getElementById(songTitleId);
     const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}&timestamp=${new Date().getTime()}`;
 
@@ -1331,7 +1331,9 @@ async function fetchSongTitle(url, songTitleId, defaultText) {
                 songTitleElement.textContent = newSongTitle;
                 lastValidSongTitle[songTitleId] = newSongTitle;
                 lastUpdateTime[songTitleId] = Date.now(); // Guarda el tiempo de la última actualización
-                console.log(`🎵 Nueva canción en ${defaultText}: ${newSongTitle}`);
+               // console.log(`🎵 Nueva canción en ${defaultText}: ${newSongTitle}`);
+              // 🔥 ACTUALIZAR MEDIA SESSION AUTOMÁTICAMENTE
+                updateMediaSession(player, stationName, logoUrl, newSongTitle);
             }
         } else {
             // Si no hay nueva canción en los últimos 15 segundos, muestra el nombre de la radio
@@ -1348,13 +1350,13 @@ async function fetchSongTitle(url, songTitleId, defaultText) {
     }
 }
 
- setInterval(() => {
-    fetchSongTitle("https://sonicpanelpro.com:8040/stats?json=1", "song1-title", "La Voz de Olancho");
-    fetchSongTitle("https://sonicpanelpro.com:8020/stats?json=1", "song2-title", "Radio Galaxia Digital");
-    fetchSongTitle("https://sonicpanelpro.com:8042/stats?json=1", "song3-title", "Futura Digital");
-    fetchSongTitle("https://sonicpanelpro.com:8044/stats?json=1", "song4-title", "Radio Z Rock n Pop");
-    fetchSongTitle("https://sonicpanelpro.com:8046/stats?json=1", "song5-title", "Radio Musical");
-}, 2000); // Se actualiza cada 5 segundos
+setInterval(() => {
+    fetchSongTitle("https://sonicpanelpro.com:8040/stats?json=1", "song1-title", "Radio HRKN", player1, "Radio HRKN", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN-LOGO.png");
+    fetchSongTitle("https://sonicpanelpro.com:8020/stats?json=1", "song2-title", "Radio Galaxia Digital", player2, "Radio Galaxia Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Galaxia-LOGO.png");
+    fetchSongTitle("https://sonicpanelpro.com:8042/stats?json=1", "song3-title", "Futura Digital", player3, "Futura Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Futura-LOGO.png");
+    fetchSongTitle("https://sonicpanelpro.com:8044/stats?json=1", "song4-title", "Radio Z Rock n Pop", player4, "Radio Z Rock n Pop", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png");
+    fetchSongTitle("https://sonicpanelpro.com:8046/stats?json=1", "song5-title", "Radio Musical", player5, "Radio Musical", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-png.png");
+}, 2000);  // Se actualiza cada 2 segundos
 
   
 </script>
