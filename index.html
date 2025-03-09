@@ -1331,7 +1331,7 @@ async function fetchSongTitle(url, songTitleId, defaultText, player, stationName
                 songTitleElement.textContent = newSongTitle;
                 lastValidSongTitle[songTitleId] = newSongTitle;
                 lastUpdateTime[songTitleId] = Date.now(); // Guarda el tiempo de la última actualización
-               // console.log(`🎵 Nueva canción en ${defaultText}: ${newSongTitle}`);
+                console.log(`🎵 Nueva canción en ${defaultText}: ${newSongTitle}`);
               // 🔥 ACTUALIZAR MEDIA SESSION AUTOMÁTICAMENTE
                 updateMediaSession(player, stationName, logoUrl, newSongTitle);
             }
