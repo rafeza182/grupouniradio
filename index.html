@@ -445,7 +445,7 @@ h3, .h3 {
             <div class="col-md-4">
                 <style>
     .radio1-container {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -458,6 +458,7 @@ h3, .h3 {
     font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
     text-align: right; /* Centra el texto */
+    overflow: hidden;
     }
 
     .radio1-logo {
@@ -476,14 +477,28 @@ h3, .h3 {
         font-size: 14px;
         margin-bottom: 5px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;    
         text-align: center;
         width: 100%; /* O el ancho necesario */
         display: flex;
         justify-content: center; /* Centra horizontalmente */
         align-items: center; /* Centra verticalmente */
+        
     }
+    
+    .radio1-song.animated {
+    display: inline-block;
+    animation: radio1-scroll 10s linear infinite;
+}
+    
+
+@keyframes radio1-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
 
     .radio1-controls {
         display: flex;
@@ -493,8 +508,8 @@ h3, .h3 {
 
     .radio1-btn {
     
-    width: 50px;  /* Ajusta el tamaño según necesites */
-    height: 50px;
+    width: 45px;  /* Ajusta el tamaño según necesites */
+    height: 45px;
     background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -503,9 +518,7 @@ h3, .h3 {
     border: none;
     cursor: pointer;
     display: block;
-    transition: transform 0.2s ease-in-out;
-    margin-left: auto;  
-        
+    transition: transform 0.2s ease-in-out;       
     }
                   
     .radio1-container:hover {
@@ -526,7 +539,7 @@ h3, .h3 {
 
 <div class="radio1-container">
         <div class="radio1-info">
-        <div class="radio1-song" id="song1-title">Cargando...</div>
+        <div class="radio1-song radio-song" id="song1-title">Cargando...</div>
         <div class="radio1-controls">
             <button class="radio1-btn" onclick="togglePlayPause1()"></button>
             <input type="range" class="volume1-slider" id="volume1-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume1(this.value)">
@@ -569,9 +582,8 @@ h3, .h3 {
          
             <div class="col-md-4">
                 <style>
-    .radio2-container {
-    
-    display: flex;
+    .radio2-container {    
+    display: block;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -584,6 +596,7 @@ h3, .h3 {
     font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
     text-margin: 10%; /* Centra el texto */
+    overflow: hidden;
     
     }
 
@@ -599,18 +612,31 @@ h3, .h3 {
     }
 
     .radio2-song {
-        font-size: 14px;
+       font-size: 14px;
         margin-bottom: 5px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;    
         text-align: center;
         width: 100%; /* O el ancho necesario */
         display: flex;
         justify-content: center; /* Centra horizontalmente */
         align-items: center; /* Centra verticalmente */
+        
     }
+    
+    .radio2-song.animated {
+    display: inline-block;
+    animation: radio2-scroll 10s linear infinite;
+}
+    
 
+@keyframes radio2-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
     .radio2-controls {
         display: flex;
         align-items: center;
@@ -618,8 +644,8 @@ h3, .h3 {
     }
 
     .radio2-btn {
-    width: 50px;  /* Ajusta el tamaño según necesites */
-    height: 50px;
+    width: 45px;  /* Ajusta el tamaño según necesites */
+    height: 45px;
     background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -629,7 +655,6 @@ h3, .h3 {
     cursor: pointer;
     display: block;
     transition: transform 0.2s ease-in-out;
-    margin-left: auto;  
     }
 
     .radio2-container:hover {
@@ -650,7 +675,7 @@ h3, .h3 {
 
 <div class="radio2-container">
         <div class="radio2-info">
-        <div class="radio2-song" id="song2-title">Cargando...</div>
+        <div class="radio2-song radio-song" id="song2-title">Cargando...</div>
         <div class="radio2-controls">
             <button class="radio2-btn" onclick="togglePlayPause2()"></button>
             <input type="range" class="volume2-slider" id="volume2-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume2(this.value)">
@@ -694,7 +719,7 @@ h3, .h3 {
             <div class="col-md-4">
                 <style>
     .radio3-container {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -707,6 +732,7 @@ h3, .h3 {
     font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
     text-margin: 10%; /* Centra el texto */
+    overflow: hidden;
     }
 
     .radio3-logo {
@@ -721,18 +747,31 @@ h3, .h3 {
     }
 
     .radio3-song {
-       font-size: 14px;
+      font-size: 14px;
         margin-bottom: 5px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;    
         text-align: center;
         width: 100%; /* O el ancho necesario */
         display: flex;
         justify-content: center; /* Centra horizontalmente */
         align-items: center; /* Centra verticalmente */
+        
     }
+    
+    .radio3-song.animated {
+    display: inline-block;
+    animation: radio3-scroll 10s linear infinite;
+}
+    
 
+@keyframes radio3-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
     .radio3-controls {
         display: flex;
         align-items: center;
@@ -740,8 +779,8 @@ h3, .h3 {
     }
 
     .radio3-btn {
-    width: 50px;  /* Ajusta el tamaño según necesites */
-    height: 50px;
+    width: 45px;  /* Ajusta el tamaño según necesites */
+    height: 45px;
     background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -751,7 +790,6 @@ h3, .h3 {
     cursor: pointer;
     display: block;
     transition: transform 0.2s ease-in-out;
-    margin-left: auto;  
     }
 
     .radio3-container:hover {
@@ -772,7 +810,7 @@ h3, .h3 {
 
 <div class="radio3-container">
     <div class="radio3-info">
-        <div class="radio3-song" id="song3-title">Cargando...</div>
+        <div class="radio3-song radio-song" id="song3-title">Cargando...</div>
         <div class="radio3-controls">
             <button class="radio3-btn" onclick="togglePlayPause3()"></button>
             <input type="range" class="volume3-slider" id="volume3-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume3(this.value)">
@@ -816,7 +854,7 @@ h3, .h3 {
             <div class="col-md-4">
                 <style>
     .radio4-container {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -829,6 +867,7 @@ h3, .h3 {
     font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
     text-margin: 10%; /* Centra el texto */
+    overflow: hidden;  
     }
 
     .radio4-logo {
@@ -846,15 +885,28 @@ h3, .h3 {
        font-size: 14px;
         margin-bottom: 5px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;    
         text-align: center;
         width: 100%; /* O el ancho necesario */
         display: flex;
         justify-content: center; /* Centra horizontalmente */
         align-items: center; /* Centra verticalmente */
+        
     }
+    
+    .radio4-song.animated {
+    display: inline-block;
+    animation: radio4-scroll 10s linear infinite;
+}
+    
 
+@keyframes radio4-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
     .radio4-controls {
         display: flex;
         align-items: center;
@@ -862,8 +914,8 @@ h3, .h3 {
     }
 
     .radio4-btn {
-    width: 50px;  /* Ajusta el tamaño según necesites */
-    height: 50px;
+    width: 45px;  /* Ajusta el tamaño según necesites */
+    height: 45px;
     background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -873,7 +925,6 @@ h3, .h3 {
     cursor: pointer;
     display: block;
     transition: transform 0.2s ease-in-out;
-    margin-left: auto;  
     }
 
     .radio4-container:hover {
@@ -894,7 +945,7 @@ h3, .h3 {
 
 <div class="radio4-container">
     <div class="radio4-info">
-        <div class="radio4-song" id="song4-title">Cargando...</div>
+        <div class="radio4-song radio-song" id="song4-title">Cargando...</div>
         <div class="radio4-controls">
             <button class="radio4-btn" onclick="togglePlayPause4()"></button>
             <input type="range" class="volume4-slider" id="volume4-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume4(this.value)">
@@ -940,7 +991,7 @@ h3, .h3 {
             <div class="col-md-4">
                <style>
     .radio5-container {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center; /* Asegura que el contenido interno esté centrado */
     background: #222;
@@ -953,6 +1004,7 @@ h3, .h3 {
     font-family: 'Lucida Console', monospace;
     margin: 10px auto; /* Esto centra horizontalmente */
     text-margin: 10%; /* Centra el texto */
+    overflow: hidden;
     }
 
     .radio5-logo {
@@ -970,14 +1022,28 @@ h3, .h3 {
         font-size: 14px;
         margin-bottom: 5px;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;    
         text-align: center;
         width: 100%; /* O el ancho necesario */
         display: flex;
         justify-content: center; /* Centra horizontalmente */
-        align-items: center; /* Centra verticalmente */        
+        align-items: center; /* Centra verticalmente */
+        
     }
+    
+    .radio5-song.animated {
+    display: inline-block;
+    animation: radio5-scroll 10s linear infinite;
+}
+    
+
+@keyframes radio5-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
 
     .radio5-controls {
         display: flex;
@@ -986,8 +1052,8 @@ h3, .h3 {
     }
 
     .radio5-btn {
-    width: 50px;  /* Ajusta el tamaño según necesites */
-    height: 50px;
+    width: 45px;  /* Ajusta el tamaño según necesites */
+    height: 45px;
     background-image: url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/playbtn.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -997,7 +1063,6 @@ h3, .h3 {
     cursor: pointer;
     display: block;
     transition: transform 0.2s ease-in-out;
-    margin-left: auto;  
     }
 
     .radio5-container:hover {
@@ -1024,7 +1089,7 @@ h3, .h3 {
 
 <div class="radio5-container">
     <div class="radio5-info">
-        <div class="radio5-song" id="song5-title">Cargando...</div>
+        <div class="radio5-song radio-song" id="song5-title">Cargando...</div>
         <div class="radio5-controls">
             <button class="radio5-btn" onclick="togglePlayPause5()"></button>
             <input type="range" class="volume5-slider" id="volume5-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume5(this.value)">
@@ -1287,6 +1352,27 @@ async function fetchSongTitle(url, songTitleId, defaultText) {
 }, 2000); // Se actualiza cada 5 segundos
 
   
+</script>
+
+   <script>
+  function checkAllSongTitles() {
+    // Busca todos los elementos de títulos de canciones en las radios
+    const songTitleElements = document.querySelectorAll(".radio-song");
+
+    songTitleElements.forEach(songTitleElement => {
+        setTimeout(() => {
+            if (songTitleElement.scrollWidth > songTitleElement.clientWidth) {
+                songTitleElement.classList.add("animated"); // 🔥 Activa la animación
+            } else {
+                songTitleElement.classList.remove("animated"); // ❌ No aplica animación
+            }
+        }, 500); // 🔥 Pequeño retraso para asegurarnos de que el título ya se actualizó
+    });
+}
+
+// Ejecutar cada 2 segundos para actualizar dinámicamente
+setInterval(checkAllSongTitles, 2000);
+
 </script>
   
 </body>
