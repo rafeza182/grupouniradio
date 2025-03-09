@@ -350,12 +350,12 @@ h3, .h3 {
 <body>
 
   <script>
-    function updateMediaSession(player, stationName, logoUrl) {
+    function updateMediaSession(player, stationName, logoUrl, songTitle) {
         if ('mediaSession' in navigator) {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: stationName,
-                artist: "Grupo Uniradio",
-                album: "En Vivo",
+                artist: songTitle || "Grupo Uniradio",
+                album: "UNIRADIO",
                 artwork: [
                     { src: logoUrl, sizes: "96x96", type: "image/png" },
                     { src: logoUrl, sizes: "128x128", type: "image/png" },
@@ -565,6 +565,7 @@ h3, .h3 {
             player.play();
             player.currentTime = 0;
         playBtn.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        const currentSongTitle = document.getElementById("song1-title").textContent;  
         updateMediaSession(player, "Radio HRKN", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png");
 
         } else {
@@ -701,6 +702,7 @@ h3, .h3 {
             player2.play();
             player2.currentTime = 0;
         playBtn2.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        const currentSongTitle = document.getElementById("song2-title").textContent;
         updateMediaSession(player2, "Radio Galaxia Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png");
 
         } else {
@@ -836,6 +838,7 @@ h3, .h3 {
             player3.play();
             player3.currentTime = 0;
         playBtn3.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
+        const currentSongTitle = document.getElementById("song3-title").textContent;
         updateMediaSession(player3, "Futura Digital", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png");
           
         } else {
@@ -972,6 +975,7 @@ h3, .h3 {
             player4.currentTime = 0;
         playBtn4.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         navigator.mediaSession.metadata = null; // Resetea antes de actualizar
+        const currentSongTitle = document.getElementById("song4-title").textContent;
         updateMediaSession(player4, "Radio Z Rock n Pop", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ500x500.png");
           
         } else {
@@ -1116,6 +1120,7 @@ h3, .h3 {
             player5.currentTime = 0; // Evita cortes de buffer
         playBtn5.style.backgroundImage = "url('https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/pausebtn.png')";
         navigator.mediaSession.metadata = null; // Resetea antes de actualizar
+        const currentSongTitle = document.getElementById("song5-title").textContent;
         updateMediaSession(player5, "Radio Musical", "https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-png.png");
           
         } else {
