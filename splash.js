@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isPWA) return; // ⛔ Si no es PWA, no mostrar el splash
 
+    // Verifica si el splash ya se mostró en esta sesión
+    if (sessionStorage.getItem("splashShown")) return;
+
+    // Marca que el splash ya se mostró
+    sessionStorage.setItem("splashShown", "true");
+
     const splashScreen = document.createElement("div");
     splashScreen.id = "splash-screen";
 
