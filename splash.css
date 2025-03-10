@@ -1,11 +1,11 @@
-/* 🔹 Splash Screen - Fullscreen */
+/* 🔹 Splash Screen - Fullscreen incluyendo la barra de estado */
 #splash-screen {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Fondo negro para evitar espacios blancos */
+    width: 100vw;
+    height: 100dvh; /* 🔥 Usa "dvh" para cubrir toda la pantalla, incluso la barra de estado */
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,19 +13,19 @@
     overflow: hidden;
 }
 
-/* 🔹 Ajuste del Video para que sea Full Screen */
+/* 🔹 Ajuste del Video para que cubra TODO incluyendo la barra de estado */
 #splash-video {
-    width: 100vw; /* Ajusta al ancho completo de la pantalla */
-    height: 100vh; /* Ajusta al alto completo de la pantalla */
-    object-fit: cover; /* Recorta el video para que llene toda la pantalla */
+    width: 100vw;
+    height: 100dvh;
+    object-fit: cover; /* Se adapta sin dejar espacios negros */
 }
 
-/* 🔹 Imagen de Respaldo si el Video no Carga */
+/* 🔹 Ajuste de la Imagen si el Video no Carga */
 #splash-image {
     width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* La imagen también se verá en pantalla completa */
-    display: none; /* Se oculta si el video carga correctamente */
+    height: 100dvh;
+    object-fit: cover;
+    display: none;
 }
 
 /* 🔹 Si el video no carga, muestra la imagen */
