@@ -1,19 +1,20 @@
-/* 🔹 Splash Screen - Fullscreen incluyendo la barra de estado */
+/* 🔹 Splash Screen - Fullscreen incluyendo la barra de estado y notch */
 #splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100dvh; /* 🔥 Usa "dvh" para cubrir toda la pantalla, incluso la barra de estado */
+    height: calc(100dvh + env(safe-area-inset-top)); /* 🔥 Ajusta el alto incluyendo la barra de estado */
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
     overflow: hidden;
+    padding-top: env(safe-area-inset-top); /* 🔥 Empuja el video para cubrir notch en iPhones */
 }
 
-/* 🔹 Ajuste del Video para que cubra TODO incluyendo la barra de estado */
+/* 🔹 Ajuste del Video para que cubra TODO incluyendo la isla dinámica */
 #splash-video {
     width: 100vw;
     height: 100dvh;
