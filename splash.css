@@ -1,33 +1,34 @@
-/* 🔹 Estilos del Splash Screen */
+/* 🔹 Splash Screen - Fullscreen */
 #splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black; /* Cambia según tu diseño */
+    background-color: black; /* Fondo negro para evitar espacios blancos */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease-out;
+    overflow: hidden;
 }
 
-/* 🔹 Estilos para el Video */
+/* 🔹 Ajuste del Video para que sea Full Screen */
 #splash-video {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
+    width: 100vw; /* Ajusta al ancho completo de la pantalla */
+    height: 100vh; /* Ajusta al alto completo de la pantalla */
+    object-fit: cover; /* Recorta el video para que llene toda la pantalla */
 }
 
-/* 🔹 Estilos para la Imagen (oculta si hay video) */
+/* 🔹 Imagen de Respaldo si el Video no Carga */
 #splash-image {
-    max-width: 100%;
-    max-height: 100%;
-    display: none;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* La imagen también se verá en pantalla completa */
+    display: none; /* Se oculta si el video carga correctamente */
 }
 
-/* 🔹 Si el video no carga, mostrar la imagen */
+/* 🔹 Si el video no carga, muestra la imagen */
 #splash-video:not([src]) + #splash-image {
     display: block;
 }
