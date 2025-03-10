@@ -4,7 +4,7 @@
   "description": "Escucha Uniradio en vivo.",
   "start_url": "/",
   "scope": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#222222",
   "theme_color": "#ff0000",
   "icons": [
@@ -16,6 +16,11 @@
     {
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-180x180.png",
+      "sizes": "180x180",
       "type": "image/png"
     }
   ],
