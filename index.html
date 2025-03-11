@@ -40,6 +40,15 @@
             font-family: Trebuchet MS, sans-serif;
             text-align: center;
         }
+
+      /* 🔹 Ajuste para que el contenido inicie desde arriba en iPhone */
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        padding-top: env(safe-area-inset-top); /* 🔥 Esto empuja el contenido hasta el notch */
+    }
         .container {
             margin-top: 10px;
         }
