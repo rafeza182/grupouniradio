@@ -9,12 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Marca que el splash ya se mostró
     sessionStorage.setItem("splashShown", "true");
 
-    // Guardamos el color original del theme
-    const themeMetaTag = document.querySelector('meta[name="theme-color"]');
-    const originalThemeColor = themeMetaTag ? themeMetaTag.getAttribute("content") : "#222222";
+    // Guardamos el color original del fondo
+    const originalBackgroundColor = document.body.style.backgroundColor || "#222222";
 
-    // Cambiamos temporalmente a blanco
-    if (themeMetaTag) themeMetaTag.setAttribute("content", "#ffffff");
+    // Cambiamos temporalmente el fondo a blanco
+    document.body.style.backgroundColor = "#ffffff";
 
     // Crear el splash screen
     const splashScreen = document.createElement("div");
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     splashVideo.muted = true;
     splashVideo.playsInline = true;
     splashVideo.onended = function () {
-        hideSplash(originalThemeColor);
+        hideSplash(originalBackgroundColor);
     };
 
     // Opción 2: Imagen Splash (Si el video falla)
@@ -41,17 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(splashScreen);
 
     // Ocultar el splash después de 5 segundos si el video no se cierra solo
-    setTimeout(() => hideSplash(originalThemeColor), 5000);
+    setTimeout(() => hideSplash(originalBackgroundColor), 5000);
 });
 
-function hideSplash(originalThemeColor) {
+function hideSplash(originalBackgroundColor) {
     const splashScreen = document.getElementById("splash-screen");
     if (splashScreen) {
         splashScreen.style.opacity = "0";
         setTimeout(() => {
             splashScreen.remove();
-            // Restauramos el color original del theme
-            document.querySelector('meta[name="theme-color"]').setAttribute("content", originalThemeColor);
+            // Restauramos el fondo original
+            document.body.style.backgroundColor = originalBackgroundColor;
         }, 500);
     }
 }
