@@ -42,14 +42,17 @@
             text-align: center;
         }
 
-      /* 🔹 Ajuste para que el contenido inicie desde arriba en iPhone */
-    html, body {
-        height: 100%;
-    }
-
+     /* 🔹 Bloquear rotación en teléfonos */
+@media screen and (orientation: landscape) {
     body {
-        padding-top: env(safe-area-inset-top); /* 🔥 Esto empuja el contenido hasta el notch */
+        transform: rotate(0deg);
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+        position: fixed;
     }
+}
+
         .container {
             margin-top: 10px;
         }
