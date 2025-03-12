@@ -42,16 +42,14 @@
             text-align: center;
         }
 
-     /* 🔹 Bloquear rotación en teléfonos */
-@media screen and (orientation: landscape) {
-    body {
-        transform: rotate(0deg);
-        width: 100vh;
-        height: 100vw;
-        overflow: hidden;
-        position: fixed;
-    }
+    /* 🔹 Bloquear la rotación en PWA sin impedir el scroll */
+body.force-portrait {
+    transform: rotate(0deg);
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
+
 
         .container {
             margin-top: 10px;
