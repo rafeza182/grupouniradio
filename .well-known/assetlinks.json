@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.grupouniradio.com",
+      "sha256_cert_fingerprints": [
+        "09:4D:70:46:5B:90:2E:3F:CC:85:2E:09:2A:98:98:E4:B9:9A:A9:9A:8B:14:AE:27:D3:6C:B4:73:8A:2F:83:CC"
+      ]
+    }
+  }
+]
