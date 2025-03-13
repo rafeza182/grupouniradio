@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Verifica si está en modo PWA (Standalone)
     const isPWA = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-    if (!isPWA) return; // ⛔ Si no es PWA, no mostrar el splash
+    
+    // Detectar si es iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    // Si no es PWA o no es iOS, no mostrar el splash (En Android se usará el de Bubblewrap)
+    if (!isPWA || !isIOS) return;
 
     // Verifica si el splash ya se mostró en esta sesión
     if (sessionStorage.getItem("splashShown")) return;
@@ -20,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const splashScreen = document.createElement("div");
     splashScreen.id = "splash-screen";
 
-    // Opción 1: Video Splash
+    // Opción 1: Video Splash (Solo en iOS)
     const splashVideo = document.createElement("video");
     splashVideo.id = "splash-video";
     splashVideo.src = "splash/video-splash.mp4"; // Ruta del video
