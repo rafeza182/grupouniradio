@@ -57,6 +57,6 @@ function hideSplash(originalThemeColor) {
             splashScreen.remove();
             // Restauramos el color original del theme
             document.querySelector('meta[name="theme-color"]').setAttribute("content", originalThemeColor);
-        }, 500);
+        }, 300);
     }
 }
