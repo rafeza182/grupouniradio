@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(splashScreen);
 
     // Ocultar el splash después de 5 segundos si el video no se cierra solo
-    setTimeout(() => hideSplash(originalThemeColor), 5000);
+    setTimeout(() => hideSplash(originalThemeColor), 3000);
 });
 
 function hideSplash(originalThemeColor) {
