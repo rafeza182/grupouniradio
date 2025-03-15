@@ -1,0 +1,53 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Esconder menú en móviles */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+}
+
+.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Línea amarilla animada en hover */
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: #ffcc00;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* Efecto hover */
+.menu a:hover {
+    color: #ffcc00;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* Mantener el color amarillo en la página activa */
+.menu a.active {
+    color: #ffcc00;
+}
+
+.menu a.active::after {
+    width: 100%;
+}
