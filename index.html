@@ -19,6 +19,7 @@
     <base href="/">
   <!-- Incluir CSS del Splash -->
 <link rel="stylesheet" href="splash.css">
+<link rel="stylesheet" href="/menu.css">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -222,38 +223,7 @@ h3, .h3 {
         <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/GEU.png" alt="Grupo Uniradio" class="logo">
 
       <style>
-  .menu {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 18px;
-    font-weight: 500;
-  }
-  .menu a {
-    text-decoration: none;
-    color: #ffffff;
-    position: relative;
-    padding: 5px 0;
-    transition: color 0.3s ease;
-  }
-  .menu a::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background: #ffcc00;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
-  .menu a:hover {
-    color: #ffcc00;
-  }
-  .menu a:hover::after {
-    width: 100%;
-  }
-
+ 
         @media all and (display-mode: standalone) {
     /* Estilos para la PWA instalada */
     .bottom-nav {
@@ -269,13 +239,9 @@ h3, .h3 {
 }
 </style>
 
-<nav class="menu">
-  <a href="/" class="menu-item">Inicio</a>
-  <a href="/contacto/" class="menu-item">Contacto</a>
-  <a href="/multicolor/" class="menu-item">Multicolor</a>
-  <a href="/nosotros/" class="menu-item">Nosotros</a>
-
-</nav>
+<div id="menu-container"></div>
+<script src="/menu.js"></script>
+      
  <br>
         <h1>Grupo Empresarial Uniradio</h1>
         <p>24 horas en vivo de contenido 100% Original</p>
