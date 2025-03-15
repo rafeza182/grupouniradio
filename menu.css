@@ -26,6 +26,7 @@
     transform: translateX(-50%);
 }
 
+/* EFECTO AL PASAR EL MOUSE */
 .menu a:hover {
     color: #ffcc00;
 }
@@ -34,12 +35,17 @@
     width: 100%;
 }
 
-/* PÁGINA ACTIVA */
+/* PÁGINA ACTIVA (seleccionada) */
 .menu a.active {
     color: #ffcc00 !important;
 }
 
+/* SUBRAYADO PERMANENTE EN LA PÁGINA ACTIVA */
+.menu a.active::after {
+    width: 100%; /* Mantiene la línea subrayada */
+}
+
 /* CUANDO NO ESTÁS EN INDEX */
 .dark-menu a {
-    color: #000000; /* Negro */
+    color: #000000; /* Negro en páginas con fondo blanco */
 }
