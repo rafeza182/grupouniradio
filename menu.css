@@ -49,3 +49,9 @@
 .dark-menu a {
     color: #000000; /* Negro en páginas con fondo blanco */
 }
+
+@media (max-width: 1024px) { /* Oculta en móviles y tablets */
+    .menu-container {
+        display: none !important;
+    }
+}
