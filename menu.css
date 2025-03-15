@@ -6,22 +6,14 @@
     font-weight: 500;
 }
 
-/* Esconder menú en móviles */
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-    }
-}
-
 .menu a {
     text-decoration: none;
-    color: #ffffff;
+    color: #ffffff; /* Blanco por defecto */
     position: relative;
     padding: 5px 0;
     transition: color 0.3s ease;
 }
 
-/* Línea amarilla animada en hover */
 .menu a::after {
     content: '';
     position: absolute;
@@ -34,7 +26,6 @@
     transform: translateX(-50%);
 }
 
-/* Efecto hover */
 .menu a:hover {
     color: #ffcc00;
 }
@@ -43,11 +34,12 @@
     width: 100%;
 }
 
-/* Mantener el color amarillo en la página activa */
+/* PÁGINA ACTIVA */
 .menu a.active {
-    color: #ffcc00;
+    color: #ffcc00 !important;
 }
 
-.menu a.active::after {
-    width: 100%;
+/* CUANDO NO ESTÁS EN INDEX */
+.dark-menu a {
+    color: #000000; /* Negro */
 }
