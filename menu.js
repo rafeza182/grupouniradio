@@ -5,12 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.getElementById("menu-container").innerHTML = data;
 
-            // Resaltar la página activa
             const currentPath = window.location.pathname;
-            document.querySelectorAll(".menu-item").forEach(link => {
+            const menuLinks = document.querySelectorAll(".menu-item");
+
+            menuLinks.forEach(link => {
                 if (link.getAttribute("href") === currentPath) {
                     link.classList.add("active");
                 }
             });
+
+            // Cambiar color de texto según la página
+            const isIndex = currentPath === "/" || currentPath === "/index.html";
+            if (!isIndex) {
+                document.querySelector(".menu").classList.add("dark-menu");
+            }
         });
 });
