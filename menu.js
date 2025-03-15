@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Verificar si la página se está ejecutando en una PWA o en WebView
+    const isPWA = window.matchMedia('(display-mode: standalone)').matches || navigator.userAgent.includes("wv");
+
+    if (isPWA) {
+        // Si es PWA o WebView, ocultar el menú
+        document.getElementById("menu-container").style.display = "none";
+        return; // Salir de la función para no cargar el menú
+    }
+
     // Cargar el menú desde menu.html
     fetch("/menu.html")
         .then(response => response.text())
