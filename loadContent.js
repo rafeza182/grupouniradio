@@ -5,12 +5,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function loadPage(page) {
         fetch(`/${page}.html`)
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
             .then(html => {
                 contentContainer.innerHTML = html;
                 history.pushState({}, "", page === "index" ? "/" : `/${page}`);
+                executeScripts(contentContainer); // Ejecutar scripts de la nueva página
             })
             .catch(error => console.error("Error cargando la página:", error));
+    }
+
+    function executeScripts(container) {
+        const scripts = container.querySelectorAll("script");
+        scripts.forEach(oldScript => {
+            const newScript = document.createElement("script");
+            newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript).parentNode.removeChild(newScript);
+        });
     }
 
     // Evitar recargar la página al hacer clic en el menú superior
