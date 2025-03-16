@@ -230,6 +230,7 @@
 
 <div id="menu-container"></div>
 <script src="/menu.js"></script>
+<div id="content-container"></div>
 
     <!-- Sección de Contacto -->
     <section class="contact-container">
@@ -426,25 +427,27 @@
 
 </script>
 
-	    <div class="bottom-nav">
-    <a href="/">
+	   <div class="bottom-nav">
+    <a href="#" class="nav-item" data-page="index">
         <img src="icons/home.svg" alt="Home">
         <span>Inicio</span>
     </a>
-    <a href="/contacto/">
+    <a href="#" class="nav-item" data-page="contacto">
         <img src="icons/contacto.svg" alt="Contacto">
         <span>Contacto</span>
     </a>
-    <a href="/multicolor/">
+    <a href="#" class="nav-item" data-page="multicolor">
         <img src="icons/multicolor.svg" alt="Multicolor">
         <span>Multicolor</span>
     </a>
-    <a href="/nosotros/">
+    <a href="#" class="nav-item" data-page="nosotros">
         <img src="icons/nosotros.svg" alt="Nosotros">
         <span>Nosotros</span>
     </a>
 </div>
 
+	     <script src="loadContent.js"></script>
+	    
 </body>
 </html>
 
