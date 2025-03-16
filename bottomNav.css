@@ -1,0 +1,42 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Color sólido */
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bottom-nav a {
+    text-align: center;
+    flex: 1;
+    color: #000000;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.bottom-nav img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+/* 📌 Mostrar solo en PWA y WebView */
+@media all and (display-mode: standalone) {
+    .bottom-nav {
+        display: flex;
+    }
+}
+
+@media all and (display-mode: browser) {
+    .bottom-nav {
+        display: none;
+    }
+}
