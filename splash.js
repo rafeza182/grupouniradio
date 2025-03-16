@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(splashScreen);
 
     // Ocultar el splash después de 5 segundos si el video no se cierra solo
-    setTimeout(() => hideSplash(originalThemeColor), 3000);
+    setTimeout(() => hideSplash(originalThemeColor), 2000);
 });
 
 function hideSplash(originalThemeColor) {
@@ -57,6 +57,6 @@ function hideSplash(originalThemeColor) {
             splashScreen.remove();
             // Restauramos el color original del theme
             document.querySelector('meta[name="theme-color"]').setAttribute("content", originalThemeColor);
-        }, 300);
+        }, 200);
     }
 }
