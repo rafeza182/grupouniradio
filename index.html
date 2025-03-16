@@ -158,6 +158,20 @@ h3, .h3 {
    font-size:35px;
    color: #FFD966;
 }         
+
+      @media screen and (orientation: landscape) {
+    body {
+        transform: rotate(90deg);
+        transform-origin: center;
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: black; /* Puedes cambiar el color de fondo */
+    }
+        
     </style>
 </head>
 
