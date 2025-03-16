@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const menuLinks = document.querySelectorAll(".menu-item");
-    const navLinks = document.querySelectorAll(".nav-item"); // Ahora detecta la bottom-nav también
+    const navLinks = document.querySelectorAll(".nav-item");
     const contentContainer = document.getElementById("content-container");
 
     function loadPage(page) {
@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.text())
             .then(html => {
                 contentContainer.innerHTML = html;
-                window.history.pushState({}, "", `/${page}`);
+                history.pushState({}, "", page === "index" ? "/" : `/${page}`);
             })
             .catch(error => console.error("Error cargando la página:", error));
     }
 
-    // Manejo de clics en el menú superior
+    // Evitar recargar la página al hacer clic en el menú superior
     menuLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Manejo de clics en la barra de navegación inferior (bottom-nav)
+    // Evitar recargar la página al hacer clic en la barra de navegación inferior
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
@@ -31,7 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Cargar la página inicial basada en la URL actual
-    const initialPage = window.location.pathname.replace("/", "") || "index";
+    // Manejar la navegación con los botones de "atrás" y "adelante" del navegador
+    window.addEventListener("popstate", function () {
+        const page = window.location.pathname.replace("/", "") || "index";
+        loadPage(page);
+    });
+
+    // Cargar la página inicial SIN que agregue /index a la URL
+    const initialPage = window.location.pathname === "/" ? "index" : window.location.pathname.replace("/", "");
     loadPage(initialPage);
 });
