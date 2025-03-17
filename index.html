@@ -158,6 +158,14 @@ h3, .h3 {
    font-size:35px;
    color: #FFD966;
 }         
+
+    /* 🔹 Ajustar el tamaño del iframe */
+    #content-frame {
+        width: 100%;
+        height: calc(100vh - 150px); /* Ajusta la altura del iframe sin afectar la radio y navbar */
+        border: none;
+        overflow: hidden;
+    }
         
     </style>
 </head>
@@ -1227,6 +1235,8 @@ document.addEventListener('gesturestart', function (e) {
     e.preventDefault();
 });
 </script>
+
+  <iframe id="content-frame" src="inicio.html" frameborder="0"></iframe>
   
  <div id="bottom-nav-container"></div>
 <script src="bottomNav.js"></script>
