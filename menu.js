@@ -21,11 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
             menuLinks.forEach(link => {
                 const linkPath = link.getAttribute("href");
                 
-                // Si la ruta actual coincide con el enlace, se agrega la clase active
-                if (currentPath === linkPath || (currentPath === '/' && linkPath === '/index') || (currentPath.includes(linkPath))) {
+                // Ajustamos la comparación para la página de inicio
+                if (currentPath === linkPath || (currentPath === '/' && linkPath === '/index')) {
+                    link.classList.add("active");
+                } else if (currentPath.includes(linkPath) && linkPath !== "/") {
+                    // Comprobamos si estamos en una página diferente, pero no en la de inicio
                     link.classList.add("active");
                 } else {
-                    link.classList.remove("active");  // Asegúrate de quitar la clase de los demás
+                    link.classList.remove("active");
                 }
             });
 
