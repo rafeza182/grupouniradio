@@ -75,7 +75,7 @@
         }
 
         .noticia {
-    width: 300px; /* Ancho fijo */
+    width: 500px; /* Ancho fijo */
     height: 250px; /* Alto fijo para evitar que el texto desborde */
     background-color: #fff;
     color: black;
@@ -108,7 +108,7 @@
     font-size: 14px;
     margin: 5px 0;
     text-align: center;
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -245,72 +245,88 @@
     </div>
 
    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Cargar múltiples feeds para cada categoría con un número específico de noticias por feed
-        cargarVariosFeeds([
+   
+    document.addEventListener("DOMContentLoaded", function () {
+    // Definir los feeds para cada categoría
+    const feeds = {
+        "noticias-internacionales": [
             { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada", noticiasPorFeed: 3 },
             { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/mexico/portada", noticiasPorFeed: 3 },
             { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada", noticiasPorFeed: 3 },
             { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/america/portada", noticiasPorFeed: 3 },
             { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada", noticiasPorFeed: 3 }
-        ], "noticias-internacionales"); // 5 feeds internacionales
+        ],
+        "noticias-nacionales": [
+            { url: "https://www.tunota.com/rss/honduras-hoy.xml", noticiasPorFeed: 4 },
+            { url: "https://www.tunota.com/rss/politica.xml", noticiasPorFeed: 4 },
+            { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 4 }
+        ],
+        "noticias-locales": [
+            { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 5 },
+            { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 5 }
+        ]
+    };
 
-        cargarVariosFeeds([
-            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/nacional", noticiasPorFeed: 4 },
-            { url: "https://feeds.bbc.com/news/uk", noticiasPorFeed: 4 },
-            { url: "https://rss.cnn.com/rss/edition_uk.rss", noticiasPorFeed: 4 }
-        ], "noticias-nacionales"); // 3 feeds nacionales
-
-        cargarVariosFeeds([
-            { url: "https://www.tunota.com/rss", noticiasPorFeed: 5 },
-            { url: "https://rss.cnn.com/rss/edition_us.rss", noticiasPorFeed: 5 }
-        ], "noticias-locales"); // 2 feeds locales
-    });
-
-    // Modificar para que cargue un número específico de noticias por feed
-    function cargarVariosFeeds(feedConfigs, contenedorId) {
-        feedConfigs.forEach(feedConfig => {
-            cargarNoticias(feedConfig.url, contenedorId, feedConfig.noticiasPorFeed); // Llamar a cargarNoticias para cada feed
-        });
+    // Cargar los feeds
+    for (const categoria in feeds) {
+        feeds[categoria].forEach(feed => cargarNoticias(feed.url, categoria, feed.noticiasPorFeed));
     }
+});
 
-    // Cambiar la función para aceptar el número de noticias por feed
-    function cargarNoticias(feedUrl, contenedorId, maxNoticiasPorFeed) {
-        fetch(feedUrl)
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data, "application/xml");
-                const items = xmlDoc.getElementsByTagName("item");
-                let noticiasHTML = "";
+function cargarNoticias(feedUrl, contenedorId, maxNoticiasPorFeed) {
+const proxy = "https://cors-anywhere.herokuapp.com/"; 
+fetch(proxy + feedUrl)
+        .then(response => response.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data, "application/xml");
 
-                // Limitar a un número específico de noticias por feed
-                for (let i = 0; i < Math.min(items.length, maxNoticiasPorFeed); i++) {
-                    const item = items[i];
-                    const title = item.getElementsByTagName("title")[0].textContent;
-                    const description = item.getElementsByTagName("description")[0].textContent;
-                    const link = item.getElementsByTagName("link")[0].textContent;
-                    const thumbnail = item.getElementsByTagName("media:content")[0]?.getAttribute("url") || "";
+            if (xmlDoc.querySelector("parsererror")) {
+                console.error(`Error al parsear el feed: ${feedUrl}`);
+                return;
+            }
 
-                    // Crear el HTML para cada noticia
-                    noticiasHTML += `
-                        <div class="noticia">
-                            ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ""}
-                            <h3>${title}</h3>
-                            <p>${description.substring(0, 50)}...</p>
-                            <a href="${link}" target="_blank">Leer más</a>
-                        </div>
-                    `;
-                }
+            const items = xmlDoc.getElementsByTagName("item");
+            let noticiasHTML = "";
 
-                // Agregar noticias al contenedor sin sobrescribir las anteriores
-                document.getElementById(contenedorId).innerHTML += noticiasHTML;
-            })
-            .catch(error => {
-                console.error("Error al cargar noticias de", feedUrl, error);
-                document.getElementById(contenedorId).innerHTML += "<p>No se pudo cargar el feed de noticias.</p>";
-            });
-    }
+            for (let i = 0; i < Math.min(items.length, maxNoticiasPorFeed); i++) {
+                const item = items[i];
+                const title = item.querySelector("title")?.textContent || "Sin título";
+                const description = item.querySelector("description")?.textContent || "Sin descripción";
+                const link = item.querySelector("link")?.textContent || "#";
+                
+                // Buscar imagen en distintas etiquetas
+                let thumbnail = item.querySelector("media\\:content, content")?.getAttribute("url") ||
+                                item.querySelector("media\\:thumbnail, thumbnail")?.getAttribute("url") || "";
+
+                // Generar HTML para la noticia
+                noticiasHTML += `
+                    <div class="noticia">
+                        <h3>${title}</h3>
+                        ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ""}      
+                        <p>${description.substring(0, 80)}...</p>
+                        <a href="${link}" target="_blank">Leer más</a>
+                    </div>
+                `;
+            }
+
+            // Agregar las noticias al contenedor
+            document.getElementById(contenedorId).innerHTML += noticiasHTML;
+        })
+        .catch(error => console.error(`Error cargando el feed ${feedUrl}:`, error));
+}
+
+const proxyUrl = "https://api.allorigins.win/get?url=";
+const feedUrl = "https://www.tunota.com/";
+
+fetch(proxyUrl + encodeURIComponent(feedUrl))
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.contents); // Verifica si el XML se carga correctamente
+    })
+    .catch(error => console.error("Error al cargar el feed:", error));
+
+
 </script>
 
     
