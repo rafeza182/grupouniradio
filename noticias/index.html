@@ -1,1 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, orientation=portrait">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="https://pub-ed8aecbaaa68449587beb6a96960b42e.r2.dev/favicon.ico">
 
+    <base href="/">
+
+<script src="lock-orientation.js"></script>
+
+<!-- Hace que la página se vea como app en iOS (sin barra de navegación) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Uniradio">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="stylesheet" href="/menu.css">
+
+<!-- Hace que la página se vea como app en Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000"> <!-- Color de la barra superior en Android -->
+
+    <title>Noticias - Uniradio</title>
+    <style>
+       body {
+            font-family: Trebuchet MS, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        /* Cabecera */
+        .header {
+            background: #222;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 280px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
+        .seccion {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .titulo-seccion {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .carrusel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carrusel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            white-space: nowrap;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carrusel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .noticia {
+    width: 200px; /* Ancho fijo */
+    height: 250px; /* Alto fijo para evitar que el texto desborde */
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    flex: 0 0 calc(20% - 10px); /* Tamaño uniforme */
+    max-width: calc(20% - 10px);
+}
+
+
+        .noticia:hover {
+            transform: scale(1.05);
+        }
+
+     .noticia img {
+    width: 100%;
+    height: 120px; /* Tamaño fijo de la imagen */
+    object-fit: cover; /* Recorta la imagen para que encaje */
+    border-radius: 5px;
+}
+
+.noticia h3 {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.noticia p {
+    font-size: 12px;
+    color: #bbb;
+    line-height: 1.3;
+    max-height: 38px; /* Limita el tamaño del texto */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Solo dos líneas */
+    -webkit-box-orient: vertical;
+}
+
+        .noticia a {
+            display: block;
+            text-decoration: none;
+            color: #1e90ff;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn-navegacion {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .btn-prev { left: 5px; }
+        .btn-next { right: 5px; }
+
+        /* Estilo especial para Internacionales con 2 filas */
+        #noticias-internacionales {
+            flex-wrap: wrap;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .noticia h3 {
+    font-size: 15px;
+    margin: 10px 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.noticia p {
+    font-size: 12px;
+    color: #aaa;
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.contenedor-seccion {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.fila-noticias {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.seccion-internacionales {
+    display: flex;
+    flex-wrap: wrap; /* Permite dos filas */
+    justify-content: center;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.seccion-internacionales .noticia {
+    flex: 0 0 calc(25% - 10px); /* 4 noticias por fila */
+    max-width: calc(25% - 10px);
+}
+
+/* Asegurar que Nacionales y Locales ocupen todo el ancho */
+.seccion-nacionales .fila-noticias,
+.seccion-locales .fila-noticias {
+    justify-content: space-between;
+}
+
+ .dividerlineal {
+           margin: 40px 50px;
+           border-top: 6px solid #bbb;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+   <header class="header">
+        <a href="/">
+        <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/GEU.png" alt="UNIRADIO" class="logo">
+            </a>
+    </header>
+
+<div id="menu-container"></div>
+<script src="/menu.js"></script>
+
+
+    <h1>Últimas Noticias</h1>
+
+    <div class="seccion">
+        <div class="titulo-seccion">Internacionales</div>
+        <div class="carrusel-container">
+            <button class="btn-navegacion btn-prev" onclick="moverCarrusel('noticias-internacionales', -1)">❮</button>
+            <div class="carrusel" id="noticias-internacionales"></div>
+            <button class="btn-navegacion btn-next" onclick="moverCarrusel('noticias-internacionales', 1)">❯</button>
+        </div>
+    </div>
+    
+    <div class="dividerlineal"></div>
+
+    <div class="seccion">
+        <div class="titulo-seccion">Nacionales</div>
+        <div class="carrusel-container">
+            <button class="btn-navegacion btn-prev" onclick="moverCarrusel('noticias-nacionales', -1)">❮</button>
+            <div class="carrusel" id="noticias-nacionales"></div>
+            <button class="btn-navegacion btn-next" onclick="moverCarrusel('noticias-nacionales', 1)">❯</button>
+        </div>
+    </div>
+    
+    <div class="dividerlineal"></div>
+
+    <div class="seccion">
+        <div class="titulo-seccion">Locales</div>
+        <div class="carrusel-container">
+            <button class="btn-navegacion btn-prev" onclick="moverCarrusel('noticias-locales', -1)">❮</button>
+            <div class="carrusel" id="noticias-locales"></div>
+            <button class="btn-navegacion btn-next" onclick="moverCarrusel('noticias-locales', 1)">❯</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            cargarNoticias("https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "noticias-internacionales");
+            cargarNoticias("https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "noticias-nacionales"); // Cambiar por un feed real
+            cargarNoticias("https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "noticias-locales"); // Cambiar por un feed real
+        });
+
+        function cargarNoticias(feedUrl, contenedorId) {
+            fetch(feedUrl)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, "application/xml");
+                    const items = xmlDoc.getElementsByTagName("item");
+                    let noticiasHTML = "";
+
+                    for (let i = 0; i < Math.min(items.length, 8); i++) {
+                        const item = items[i];
+                        const title = item.getElementsByTagName("title")[0].textContent;
+                        const description = item.getElementsByTagName("description")[0].textContent;
+                        const link = item.getElementsByTagName("link")[0].textContent;
+                        const thumbnail = item.getElementsByTagName("media:content")[0]?.getAttribute("url") || "";
+
+                        noticiasHTML += `
+                            <div class="noticia">
+                                ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ""}
+                                <h3>${title}</h3>
+                                <p>${description.substring(0, 50)}...</p>
+                                <a href="${link}" target="_blank">Leer más</a>
+                            </div>
+                        `;
+                    }
+
+                    document.getElementById(contenedorId).innerHTML = noticiasHTML;
+                })
+                .catch(error => {
+                    console.error("Error al cargar noticias de", feedUrl, error);
+                });
+        }
+
+        function moverCarrusel(id, direccion) {
+            const carrusel = document.getElementById(id);
+            const scrollCantidad = 320; // Ancho de una tarjeta más margen
+
+            carrusel.scrollBy({
+                left: direccion * scrollCantidad,
+                behavior: "smooth"
+            });
+        }
+    </script>
+    
+      <footer class="footer">
+  <div class="footer-logos">
+     <a href="https://www.facebook.com/canal21gtv" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO%20GALAXIATV.png" alt="Canal de TV">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100093297494940" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/HRKN%203D.png" alt="Radio 1">
+    </a>
+    <a href="https://www.facebook.com/GalaxiaDigital899" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Log%20Galaxia%203D.png" alt="Radio 2">
+    </a>
+    <a href="https://facebook.com/radio3" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20Futura%20nuevo%2099.5.png" alt="Radio 3">
+    </a>
+    <a href="https://www.facebook.com/radiozrnp" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LogoRadioZ.png" alt="Radio 4">
+    </a>
+    <a href="https://facebook.com/" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/LOGO-RM-edited.webp" alt="Radio 5">
+    </a>
+    <a href="https://www.facebook.com/GMulticolor" target="_blank">
+      <img src="https://pub-7da5e362aaa441968e04a87faea5f098.r2.dev/Logo%20MultiColor.png" alt="multicolor 1">
+    </a>
+  </div>
+  <p class="footer-text">GRUPO EMPRESARIAL UNIRADIO - PIONEROS EN COMUNICACIÓN</p>
+  <p class="footer-rights">&copy; 2025 Todos los derechos reservados.</p>
+</footer>
+  
+   <style>
+  .footer {
+  text-align: center;
+  background-color: #111;
+  padding: 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.footer-logos img {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.footer-logos a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.footer-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer-rights {
+  font-size: 14px;
+  opacity: 0.7;
+}
+	
+ </style>
+
+</body>
+</html>
