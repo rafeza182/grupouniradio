@@ -75,19 +75,21 @@
         }
 
         .noticia {
-    width: 200px; /* Ancho fijo */
+    width: 300px; /* Ancho fijo */
     height: 250px; /* Alto fijo para evitar que el texto desborde */
-    background-color: #222;
-    color: white;
+    background-color: #fff;
+    color: black;
     padding: 10px;
     margin: 10px;
-    border-radius: 8px;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
     flex: 0 0 calc(20% - 10px); /* Tamaño uniforme */
     max-width: calc(20% - 10px);
+    border: 0.5px solid #BCBCBC; 
+    
 }
 
 
@@ -113,7 +115,7 @@
 
 .noticia p {
     font-size: 12px;
-    color: #bbb;
+    color: #5B5B5B;
     line-height: 1.3;
     max-height: 38px; /* Limita el tamaño del texto */
     overflow: hidden;
@@ -242,56 +244,75 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            cargarNoticias("https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "noticias-internacionales");
-            cargarNoticias("https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "noticias-nacionales"); // Cambiar por un feed real
-            cargarNoticias("https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "noticias-locales"); // Cambiar por un feed real
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Cargar múltiples feeds para cada categoría con un número específico de noticias por feed
+        cargarVariosFeeds([
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada", noticiasPorFeed: 3 },
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/mexico/portada", noticiasPorFeed: 3 },
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada", noticiasPorFeed: 3 },
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/america/portada", noticiasPorFeed: 3 },
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada", noticiasPorFeed: 3 }
+        ], "noticias-internacionales"); // 5 feeds internacionales
+
+        cargarVariosFeeds([
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/nacional", noticiasPorFeed: 4 },
+            { url: "https://feeds.bbc.com/news/uk", noticiasPorFeed: 4 },
+            { url: "https://rss.cnn.com/rss/edition_uk.rss", noticiasPorFeed: 4 }
+        ], "noticias-nacionales"); // 3 feeds nacionales
+
+        cargarVariosFeeds([
+            { url: "https://www.tunota.com/rss", noticiasPorFeed: 5 },
+            { url: "https://rss.cnn.com/rss/edition_us.rss", noticiasPorFeed: 5 }
+        ], "noticias-locales"); // 2 feeds locales
+    });
+
+    // Modificar para que cargue un número específico de noticias por feed
+    function cargarVariosFeeds(feedConfigs, contenedorId) {
+        feedConfigs.forEach(feedConfig => {
+            cargarNoticias(feedConfig.url, contenedorId, feedConfig.noticiasPorFeed); // Llamar a cargarNoticias para cada feed
         });
+    }
 
-        function cargarNoticias(feedUrl, contenedorId) {
-            fetch(feedUrl)
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(data, "application/xml");
-                    const items = xmlDoc.getElementsByTagName("item");
-                    let noticiasHTML = "";
+    // Cambiar la función para aceptar el número de noticias por feed
+    function cargarNoticias(feedUrl, contenedorId, maxNoticiasPorFeed) {
+        fetch(feedUrl)
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, "application/xml");
+                const items = xmlDoc.getElementsByTagName("item");
+                let noticiasHTML = "";
 
-                    for (let i = 0; i < Math.min(items.length, 12); i++) {
-                        const item = items[i];
-                        const title = item.getElementsByTagName("title")[0].textContent;
-                        const description = item.getElementsByTagName("description")[0].textContent;
-                        const link = item.getElementsByTagName("link")[0].textContent;
-                        const thumbnail = item.getElementsByTagName("media:content")[0]?.getAttribute("url") || "";
+                // Limitar a un número específico de noticias por feed
+                for (let i = 0; i < Math.min(items.length, maxNoticiasPorFeed); i++) {
+                    const item = items[i];
+                    const title = item.getElementsByTagName("title")[0].textContent;
+                    const description = item.getElementsByTagName("description")[0].textContent;
+                    const link = item.getElementsByTagName("link")[0].textContent;
+                    const thumbnail = item.getElementsByTagName("media:content")[0]?.getAttribute("url") || "";
 
-                        noticiasHTML += `
-                            <div class="noticia">
-                                ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ""}
-                                <h3>${title}</h3>
-                                <p>${description.substring(0, 50)}...</p>
-                                <a href="${link}" target="_blank">Leer más</a>
-                            </div>
-                        `;
-                    }
+                    // Crear el HTML para cada noticia
+                    noticiasHTML += `
+                        <div class="noticia">
+                            ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ""}
+                            <h3>${title}</h3>
+                            <p>${description.substring(0, 50)}...</p>
+                            <a href="${link}" target="_blank">Leer más</a>
+                        </div>
+                    `;
+                }
 
-                    document.getElementById(contenedorId).innerHTML = noticiasHTML;
-                })
-                .catch(error => {
-                    console.error("Error al cargar noticias de", feedUrl, error);
-                });
-        }
-
-        function moverCarrusel(id, direccion) {
-            const carrusel = document.getElementById(id);
-            const scrollCantidad = 320; // Ancho de una tarjeta más margen
-
-            carrusel.scrollBy({
-                left: direccion * scrollCantidad,
-                behavior: "smooth"
+                // Agregar noticias al contenedor sin sobrescribir las anteriores
+                document.getElementById(contenedorId).innerHTML += noticiasHTML;
+            })
+            .catch(error => {
+                console.error("Error al cargar noticias de", feedUrl, error);
+                document.getElementById(contenedorId).innerHTML += "<p>No se pudo cargar el feed de noticias.</p>";
             });
-        }
-    </script>
+    }
+</script>
+
     
       <footer class="footer">
   <div class="footer-logos">
