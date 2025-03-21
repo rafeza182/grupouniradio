@@ -259,11 +259,11 @@
         "noticias-nacionales": [
             { url: "https://www.tunota.com/rss/honduras-hoy.xml", noticiasPorFeed: 4 },
             { url: "https://www.tunota.com/rss/politica.xml", noticiasPorFeed: 4 },
-            { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 4 }
+            { url: "https://www.tunota.com/rss/radar-comercial.xml", noticiasPorFeed: 4 }
         ],
         "noticias-locales": [
             { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 5 },
-            { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 5 }
+            { url: "https://www.tunota.com/rss/entretenimiento.xml", noticiasPorFeed: 5 }
         ]
     };
 
@@ -274,8 +274,8 @@
 });
 
 function cargarNoticias(feedUrl, contenedorId, maxNoticiasPorFeed) {
-const proxy = "https://cors-anywhere.herokuapp.com/"; 
-fetch(proxy + feedUrl)
+const proxy = "https://api.allorigins.win/raw?url=";
+fetch(proxy + encodeURIComponent(feedUrl))
         .then(response => response.text())
         .then(data => {
             const parser = new DOMParser();
@@ -315,17 +315,6 @@ fetch(proxy + feedUrl)
         })
         .catch(error => console.error(`Error cargando el feed ${feedUrl}:`, error));
 }
-
-const proxyUrl = "https://api.allorigins.win/get?url=";
-const feedUrl = "https://www.tunota.com/";
-
-fetch(proxyUrl + encodeURIComponent(feedUrl))
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.contents); // Verifica si el XML se carga correctamente
-    })
-    .catch(error => console.error("Error al cargar el feed:", error));
-
 
 </script>
 
