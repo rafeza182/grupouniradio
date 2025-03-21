@@ -276,7 +276,7 @@
                     const items = xmlDoc.getElementsByTagName("item");
                     let noticiasHTML = "";
 
-                    for (let i = 0; i < Math.min(items.length, 8); i++) {
+                    for (let i = 0; i < Math.min(items.length, 16); i++) {
                         const item = items[i];
                         const title = item.getElementsByTagName("title")[0].textContent;
                         const description = item.getElementsByTagName("description")[0].textContent;
