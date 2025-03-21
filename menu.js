@@ -14,12 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.getElementById("menu-container").innerHTML = data;
 
-            const currentPath = window.location.pathname;
+            const currentPath = window.location.pathname;  // Aquí detectamos la ruta actual
             const menuLinks = document.querySelectorAll(".menu-item");
 
+            // Comprobar si la URL actual coincide con algún enlace del menú
             menuLinks.forEach(link => {
-                if (link.getAttribute("href") === currentPath) {
+                const linkPath = link.getAttribute("href");
+                
+                // Si la ruta actual coincide con el enlace, se agrega la clase active
+                if (currentPath === linkPath || (currentPath === '/' && linkPath === '/index') || (currentPath.includes(linkPath))) {
                     link.classList.add("active");
+                } else {
+                    link.classList.remove("active");  // Asegúrate de quitar la clase de los demás
                 }
             });
 
