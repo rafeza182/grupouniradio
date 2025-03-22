@@ -398,5 +398,16 @@ fetch(proxy + encodeURIComponent(feedUrl))
 	
  </style>
 
+	<script>
+    function moverCarrusel(id, direccion) {
+        const carrusel = document.getElementById(id);
+        if (!carrusel) return;
+
+        const desplazamiento = carrusel.offsetWidth * 0.6 * direccion;
+        carrusel.scrollBy({ left: desplazamiento, behavior: "smooth" });
+    }
+</script>
+	
+	
 </body>
 </html>
