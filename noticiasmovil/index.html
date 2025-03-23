@@ -19,114 +19,69 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#000000"> <!-- Color de la barra superior en Android -->
 
-    <title>Noticias Movil</title>
+     <title>Noticias - TikTok Style</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: white;
-            text-align: center;
+            margin: 0;
             overflow: hidden;
+            background-color: black;
         }
-
         .video-container {
             width: 100vw;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             position: relative;
         }
-
-        .video-wrapper {
-            width: 90%;
-            max-width: 500px;
-            height: 600px;
-            overflow: hidden;
-            border-radius: 10px;
-            background-color: #111;
-            position: relative;
-        }
-
         video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
-        .swipe-text {
-            margin-top: 10px;
-            font-size: 16px;
-            opacity: 0.7;
-        }
     </style>
 </head>
 <body>
 
-    <div id="video-feed" class="video-container">
-        <div class="video-wrapper">
-            <video id="tiktok-video" autoplay loop muted></video>
-        </div>
-        <p class="swipe-text">Desliza hacia arriba para otro video</p>
-    </div>
+    <div class="video-container" id="videoContainer"></div>
 
     <script>
-        // Cuentas de TikTok que queremos mostrar
-        const cuentasTikTok = [
-            "macariva", "benjaminzamoratv", "diariosport", "mls",
-            "dailymail", "diario.ole", "revistapanenka", "concacaf",
-            "latinus_us", "championsleague", "mvsnoticias", "colglobalnews",
-            "elheraldohonduras", "tsihonduras"
-        ];
-
-        let index = 0;
-        let videosTikTok = [];
-
-        // Función para obtener videos de TikTok
-        async function obtenerVideos() {
+        async function cargarVideo() {
             try {
-                let cuenta = cuentasTikTok[Math.floor(Math.random() * cuentasTikTok.length)];
-                let response = await fetch(`https://www.tikwm.com/api/user/posts?username=${cuenta}`);
-                let data = await response.json();
+                const response = await fetch("https://grupouniradio-production.up.railway.app/videos");
+                const data = await response.json();
 
-                if (data.data && data.data.length > 0) {
-                    videosTikTok = data.data.map(video => video.play);
-                    cargarNuevoVideo();
-                }
+                const videoContainer = document.getElementById("videoContainer");
+                videoContainer.innerHTML = "";
+
+                // Crear elemento video
+                const video = document.createElement("video");
+                video.src = data.videos[0].url;
+                video.controls = false;
+                video.autoplay = true;
+                video.loop = false;
+                video.muted = false;
+                video.style.width = "100%";
+                video.style.height = "100%";
+                videoContainer.appendChild(video);
+
+                // Cambiar video al hacer swipe hacia arriba
+                document.addEventListener("touchstart", (e) => {
+                    let touchStartY = e.touches[0].clientY;
+                    document.addEventListener("touchend", (e) => {
+                        let touchEndY = e.changedTouches[0].clientY;
+                        if (touchStartY - touchEndY > 50) {
+                            cargarVideo(); // Cargar nuevo video al hacer swipe arriba
+                        }
+                    }, { once: true });
+                });
+
             } catch (error) {
-                console.error("Error al obtener videos:", error);
+                console.error("Error cargando video:", error);
             }
         }
 
-        function cargarNuevoVideo() {
-            if (videosTikTok.length > 0) {
-                document.getElementById("tiktok-video").src = videosTikTok[index];
-                index = (index + 1) % videosTikTok.length; // Ciclo infinito de videos
-            }
-        }
-
-        // Detectar swipe para cambiar video
-        let startY;
-        document.addEventListener("touchstart", (e) => {
-            startY = e.touches[0].clientY;
-        });
-
-        document.addEventListener("touchend", (e) => {
-            let endY = e.changedTouches[0].clientY;
-            if (startY - endY > 50) {
-                cargarNuevoVideo();
-            }
-        });
-
-        // Cargar videos al iniciar
-        obtenerVideos();
+        cargarVideo(); // Cargar el primer video al abrir la página
     </script>
 
     <div id="bottom-nav-container"></div>
