@@ -257,17 +257,6 @@
         .btn-prev { left: 5px; }
         .btn-next { right: 5px; }
 
-        /* Estilo especial para Internacionales con 2 filas */
-        #noticias-internacionales {
-            flex-wrap: wrap;
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-    padding-bottom: 10px;
-    justify-content: center;
-            
-        }
-     
 .contenedor-seccion {
     width: 100%;
     padding: 10px 0;
@@ -290,12 +279,6 @@
     margin: 0 auto;
     padding: 20px 10px;
     overflow: visible; /* Permite que las noticias se desborden si es necesario */
-}
-
-.seccion-internacionales .noticia {
-    flex: 0 0 calc(50% - 10px); /* 4 noticias por fila */
-    max-width: calc(50% - 10px);
-    overflow-x: auto;
 }
 
 /* Asegurar que Nacionales y Locales ocupen todo el ancho */
@@ -481,7 +464,6 @@ fetch(proxy + encodeURIComponent(feedUrl))
                 document.getElementById("ticker").innerHTML = "<span>No se encontraron noticias</span>";
             }
         }
-
         cargarNoticiasT();
     </script>
 
@@ -494,60 +476,6 @@ fetch(proxy + encodeURIComponent(feedUrl))
         </div>
     </div>
     
-    <script>
- async function cargarVideosTikTok() {
-    // Aquí debes agregar las URLs de los videos o las cuentas
-    const tiktokUsernames = [ "macariva", "benjaminzamoratv", "diariosport", "mls",
-        "dailymail", "diario.ole", "revistapanenka", "concacaf",
-        "latinus_us", "championsleague", "mvsnoticias", "colglobalnews",
-        "elheraldohonduras", "tsihonduras"]; // Ejemplo de varias cuentas
-    const videosContainer = document.getElementById("videos-container");
-    videosContainer.innerHTML = "Cargando videos...";
-
-    let videoHTML = '';
-    for (let username of tiktokUsernames) {
-        try {
-            const response = await fetch(https://tiktok-video-downloader-api.p.rapidapi.com/?username=${username}, {
-                method: "GET",
-                headers: {
-                    "X-RapidAPI-Key": "346cdf6652mshb43bb374fc1b13ap1afa76jsnb05ec41bd175", // Asegúrate de poner tu clave API aquí
-                    "X-RapidAPI-Host": "tiktok-video-downloader-api.p.rapidapi.com"
-                }
-            });
-            const data = await response.json();
-
-            console.log(data); // Ver la respuesta de la API
-
-            // Verifica si hay videos en la respuesta
-            if (data && data.video_urls && data.video_urls.length > 0) {
-                data.video_urls.forEach(url => {
-                    videoHTML += 
-                        <div class="video-container">
-                            <video class="tiktok-video" controls>
-                                <source src="${url}" type="video/mp4">
-                                Tu navegador no soporta este formato de video.
-                            </video>
-                        </div>
-                    ;
-                });
-            } else {
-                videoHTML += <p>No se encontraron videos para ${username}</p>;
-            }
-        } catch (error) {
-            console.error("Error al cargar videos:", error);
-            videoHTML += <p>Error al cargar videos para ${username}</p>;
-        }
-    }
-
-    videosContainer.innerHTML = videoHTML;
-}
-
-window.onload = cargarVideosTikTok; // Cargar videos al cargar la página
-
-</script>
-
-
-
     <div id="bottom-nav-container"></div>
     <script src="bottomNav.js"></script>
 
