@@ -420,61 +420,69 @@ fetch(proxy + encodeURIComponent(feedUrl))
 </script>
 
 <script>
-        async function cargarNoticiasT() {
-            const rssFeeds = [
-                "https://www.eltiempo.com/rss/mundo.xml",
-                "https://www.bbc.com/mundo/ultimas_noticias/index.xml",
-                "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
-            ];
+    async function cargarNoticiasT() {
+        const rssFeeds = [
+            "https://www.eltiempo.com/rss/mundo.xml",
+            "https://www.bbc.com/mundo/ultimas_noticias/index.xml",
+            "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+        ];
 
-            let noticias = [];
+        let noticias = [];
 
-            for (let feed of rssFeeds) {
-                try {
-                    const response = await fetch(https://api.allorigins.win/get?url=${encodeURIComponent(feed)});
-                    const data = await response.json();
-                    const parser = new DOMParser();
-                    const xml = parser.parseFromString(data.contents, "text/xml");
-                    const items = xml.querySelectorAll("item");
-
-                    let noticiasFiltradas = Array.from(items)
-                        .slice(0, 5) // Obtener las primeras 5 noticias
-                        .map(item => {
-                            const title = item.querySelector("title").textContent;
-                            const link = item.querySelector("link").textContent;
-                            return <a href="${link}" target="_blank">${title}</a>;
-                        });
-
-                    noticias.push(...noticiasFiltradas);
-                } catch (error) {
-                    console.error("Error al cargar el RSS:", error);
-                }
-            }
-
-            if (noticias.length > 0) {
-                let ticker = document.getElementById("ticker");
+        for (let feed of rssFeeds) {
+            try {
+                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(feed)}`);
+                const data = await response.json();
                 
-                // Duplicamos las noticias para que la animación sea infinita sin cortes
-                ticker.innerHTML = noticias.join(" &bull; ") + " " + noticias.join(" &bull; ");
+                if (!data || !data.contents) {
+                    console.error("Error: No se pudieron obtener los datos del RSS.");
+                    continue;
+                }
 
-                // Ajustamos la duración de la animación según la cantidad de noticias
-                let duracion = noticias.length * 8; // Aprox 8s por cada noticia
-                ticker.style.animationDuration = duracion + "s";
-            } else {
-                document.getElementById("ticker").innerHTML = "<span>No se encontraron noticias</span>";
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, "text/xml");
+                const items = xml.querySelectorAll("item");
+
+                let noticiasFiltradas = Array.from(items)
+                    .slice(0, 5) // Obtener las primeras 5 noticias
+                    .map(item => {
+                        const title = item.querySelector("title").textContent;
+                        const link = item.querySelector("link").textContent;
+                        return `<a href="${link}" target="_blank">${title}</a>`;
+                    });
+
+                noticias.push(...noticiasFiltradas);
+            } catch (error) {
+                console.error("Error al cargar el RSS:", error);
             }
         }
-        cargarNoticiasT();
-    </script>
 
-        <div class="ticker-container">
-        <div class="ticker-label">ÚLTIMA HORA</div>
-        <div class="ticker-wrapper">
-            <div class="ticker-content" id="ticker">
-                <span>Cargando noticias...</span>
-            </div>
+        if (noticias.length > 0) {
+            let ticker = document.getElementById("ticker");
+            
+            // Duplicamos las noticias para que la animación sea infinita sin cortes
+            ticker.innerHTML = noticias.join(" &bull; ") + " " + noticias.join(" &bull; ");
+
+            // Ajustamos la duración de la animación según la cantidad de noticias y su longitud
+            let duracion = Math.max(15, noticias.length * 5); // Un mínimo de 15s para evitar velocidad excesiva
+            ticker.style.animationDuration = duracion + "s";
+        } else {
+            document.getElementById("ticker").innerHTML = "<span>No se encontraron noticias</span>";
+        }
+    }
+
+    cargarNoticiasT();
+</script>
+
+<div class="ticker-container">
+    <div class="ticker-label">ÚLTIMA HORA</div>
+    <div class="ticker-wrapper">
+        <div class="ticker-content" id="ticker">
+            <span>Cargando noticias...</span>
         </div>
     </div>
+</div>
+
     
     <div id="bottom-nav-container"></div>
     <script src="bottomNav.js"></script>
