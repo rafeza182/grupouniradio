@@ -24,7 +24,7 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: black;
+            background-color: white;
         }
         
           .header {
@@ -39,6 +39,36 @@
         h1 {
             text-align: center;
         }
+        
+        .seccion {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .titulo-seccion {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+  .carrusel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carrusel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            white-space: nowrap;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carrusel::-webkit-scrollbar {
+            display: none;
+        }
+
 
        
          /* Contenedor del ticker */
