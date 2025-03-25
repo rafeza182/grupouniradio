@@ -21,20 +21,30 @@
 
      <title>Noticias - TikTok Style</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: white;
-        }
-        
-          .header {
-            background: #222;
-            padding: 20px;
-        }
+       body {
+    margin: 0;
+    overflow-x: hidden; /* Evita el desplazamiento lateral */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido */
+    width: 100vw;
+}
 
-        .logo {
-            max-width: 280px;
-        }
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el logo */
+    background: #222;
+    padding: 20px 0;
+}
+
+.logo {
+    max-width: 280px;
+    display: block;
+    margin: 0 auto;
+}
+
         
         h1 {
             text-align: center;
@@ -283,8 +293,8 @@
 }
 
 .seccion-internacionales .noticia {
-    flex: 0 0 calc(25% - 10px); /* 4 noticias por fila */
-    max-width: calc(25% - 10px);
+    flex: 0 0 calc(50% - 10px); /* 4 noticias por fila */
+    max-width: calc(50% - 10px);
     overflow-x: auto;
 }
 
@@ -326,27 +336,31 @@
     </header>
 
 
-   <h1>Noticias Uniradio</h1>
+ <div class="contenedor">
+    <h1>Noticias Uniradio</h1>
 
     <div class="seccion">
-    <div class="titulo-seccion">Internacionales</div>
-    <div class="grid-noticias" id="noticias-internacionales"></div>
-</div>
-    
+        <div class="titulo-seccion">Internacionales</div>
+        <div class="grid-noticias" id="noticias-internacionales"></div>
+    </div>
+
     <div class="dividerlineal"></div>
 
     <div class="seccion">
         <div class="titulo-seccion">Nacionales</div>           
-           <div class="grid-noticias" id="noticias-nacionales">   
-        </div>
+        <div class="grid-noticias" id="noticias-nacionales"></div>
     </div>
-    
+
     <div class="dividerlineal"></div>
 
     <div class="seccion">
         <div class="titulo-seccion">Deportes y Entretenimiento</div>
-         <div class="grid-noticias" id="noticias-locales"></div>
+        <div class="grid-noticias" id="noticias-locales"></div>
     </div>
+</div>
+
+
+	
    <script>
    
     document.addEventListener("DOMContentLoaded", function () {
