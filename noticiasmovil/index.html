@@ -298,6 +298,21 @@
            margin: 40px 50px;
            border-top: 6px solid #bbb;
         }
+
+	         /* Contenedor de noticias en 2 columnas */
+.grid-noticias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 10px; /* Espaciado entre noticias */
+    padding: 10px;
+}
+
+/* Ajuste para que las noticias se adapten mejor */
+.noticia {
+    width: 100%; /* Que ocupe todo el ancho de la columna */
+    max-width: 100%;
+    height: auto; /* Que se adapte al contenido */
+}
         
       
     </style>
@@ -314,18 +329,15 @@
    <h1>Noticias Uniradio</h1>
 
     <div class="seccion">
-        <div class="titulo-seccion">Internacionales</div>
-        <div class="carrusel-container">
-            <div class="carrusel" id="noticias-internacionales"></div>
-        </div>
-    </div>
+    <div class="titulo-seccion">Internacionales</div>
+    <div class="grid-noticias" id="noticias-internacionales"></div>
+</div>
     
     <div class="dividerlineal"></div>
 
     <div class="seccion">
-        <div class="titulo-seccion">Nacionales</div>
-        <div class="carrusel-container">           
-           <div class="carrusel" id="noticias-nacionales"></div>        
+        <div class="titulo-seccion">Nacionales</div>           
+           <div class="grid-noticias" id="noticias-nacionales">   
         </div>
     </div>
     
@@ -333,11 +345,8 @@
 
     <div class="seccion">
         <div class="titulo-seccion">Deportes y Entretenimiento</div>
-        <div class="carrusel-container">
-            <div class="carrusel" id="noticias-locales"></div>
-          </div>
+         <div class="grid-noticias" id="noticias-locales"></div>
     </div>
-
    <script>
    
     document.addEventListener("DOMContentLoaded", function () {
