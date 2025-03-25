@@ -21,16 +21,17 @@
 
      <title>Noticias - TikTok Style</title>
     <style>
-       html, body {
+     html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden; /* Permitir scroll solo en vertical */
+    overflow-y: auto;
     width: 100%;
     max-width: 100%;
-    position: fixed; /* Evita movimientos inesperados */
-    height: 100%;
-    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
+    height: 100vh; /* Que tome toda la altura de la pantalla */
+    -webkit-overflow-scrolling: touch;
 }
+
 	    
 .header {
     width: 100%;
