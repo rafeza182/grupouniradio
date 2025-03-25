@@ -26,6 +26,20 @@
             overflow: hidden;
             background-color: black;
         }
+        
+          .header {
+            background: #222;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 280px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
        
          /* Contenedor del ticker */
         .ticker-container {
@@ -93,35 +107,274 @@
             }
         }
         
-        /* Contenedor de los videos */
-#videos-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  background-color: black;
+       .seccion {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .titulo-seccion {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .carrusel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carrusel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            white-space: nowrap;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carrusel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .noticia {
+    width: 500px; /* Ancho fijo */
+    height: 250px; /* Alto fijo para evitar que el texto desborde */
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    margin: 1px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    flex: 0 0 calc(20% - 10px); /* Tamaño uniforme */
+    max-width: calc(20% - 10px);
+    border: 0.5px solid #BCBCBC; 
+    
 }
 
-.video-container {
-  width: 100%;
-  height: 100%;
-  margin: 10px 0;
+
+        .noticia:hover {
+            transform: scale(1.05);
+        }
+
+     .noticia img {
+    width: 100%;
+    height: 120px; /* Tamaño fijo de la imagen */
+    object-fit: cover; /* Recorta la imagen para que encaje */
+    border-radius: 5px;
 }
 
-.tiktok-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.noticia h3 {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1em;
+    height: 8em;       /* height is 2x line-height, so two lines will display */
+    overflow: hidden;  /* prevents extra lines from being visible */
+    white-space: wrap;
+ 
 }
 
+.noticia p {
+    font-size: 12px;
+    color: #5B5B5B;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 1em;
+    height: 8em;       /* height is 2x line-height, so two lines will display */
+    overflow: hidden;  /* prevents extra lines from being visible */
+    white-space: wrap;
+ 
+}
 
+        .noticia a {
+            display: block;
+            text-decoration: none;
+            color: #1e90ff;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn-navegacion {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .btn-prev { left: 5px; }
+        .btn-next { right: 5px; }
+
+        /* Estilo especial para Internacionales con 2 filas */
+        #noticias-internacionales {
+            flex-wrap: wrap;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+    padding-bottom: 10px;
+    justify-content: center;
+            
+        }
+     
+.contenedor-seccion {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.fila-noticias {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.seccion-internacionales {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las noticias se ajusten automáticamente a las filas */
+    gap: 20px; /* Espaciado entre noticias */
+    justify-content: flex-start; /* Alinea las noticias al inicio */
+    margin: 0 auto;
+    padding: 20px 10px;
+    overflow: visible; /* Permite que las noticias se desborden si es necesario */
+}
+
+.seccion-internacionales .noticia {
+    flex: 0 0 calc(25% - 10px); /* 4 noticias por fila */
+    max-width: calc(25% - 10px);
+    overflow-x: auto;
+}
+
+/* Asegurar que Nacionales y Locales ocupen todo el ancho */
+.seccion-nacionales .fila-noticias,
+.seccion-locales .fila-noticias {
+    justify-content: space-between;
+}
+
+ .dividerlineal {
+           margin: 40px 50px;
+           border-top: 6px solid #bbb;
+        }
+        
+      
     </style>
 </head>
 <body>
 
-<div id="videos-container"></div>
+   <h1>Últimas Noticias</h1>
+
+    <div class="seccion">
+        <div class="titulo-seccion">Internacionales</div>
+        <div class="carrusel-container">
+            <div class="carrusel" id="noticias-internacionales"></div>
+        </div>
+    </div>
+    
+    <div class="dividerlineal"></div>
+
+    <div class="seccion">
+        <div class="titulo-seccion">Nacionales</div>
+        <div class="carrusel-container">           
+           <div class="carrusel" id="noticias-nacionales"></div>        
+        </div>
+    </div>
+    
+    <div class="dividerlineal"></div>
+
+    <div class="seccion">
+        <div class="titulo-seccion">Deportes y Entretenimiento</div>
+        <div class="carrusel-container">
+            <div class="carrusel" id="noticias-locales"></div>
+          </div>
+    </div>
+
+   <script>
+   
+    document.addEventListener("DOMContentLoaded", function () {
+    // Definir los feeds para cada categoría
+    const feeds = {
+        "noticias-internacionales": [
+	    { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada", noticiasPorFeed: 2 },
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/america/portada", noticiasPorFeed: 2 },
+	    { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada", noticiasPorFeed: 3 },
+            { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/mexico/portada", noticiasPorFeed: 2 },          
+	    { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada", noticiasPorFeed: 3 }
+                   
+        ],
+        "noticias-nacionales": [
+            { url: "https://www.tunota.com/rss/honduras-hoy.xml", noticiasPorFeed: 4 },
+            { url: "https://www.tunota.com/rss/politica.xml", noticiasPorFeed: 4 },
+            { url: "https://www.tunota.com/rss/radar-comercial.xml", noticiasPorFeed: 4 }
+        ],
+        "noticias-locales": [
+            { url: "https://www.tunota.com/rss/deportes.xml", noticiasPorFeed: 5 },
+            { url: "https://www.tunota.com/rss/entretenimiento.xml", noticiasPorFeed: 5 }
+        ]
+    };
+
+    // Cargar los feeds
+    for (const categoria in feeds) {
+        feeds[categoria].forEach(feed => cargarNoticias(feed.url, categoria, feed.noticiasPorFeed));
+    }
+});
+
+function cargarNoticias(feedUrl, contenedorId, maxNoticiasPorFeed) {
+const proxy = "https://api.allorigins.win/raw?url=";
+fetch(proxy + encodeURIComponent(feedUrl))
+        .then(response => response.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data, "application/xml");
+
+            if (xmlDoc.querySelector("parsererror")) {
+                console.error(`Error al parsear el feed: ${feedUrl}`);
+                return;
+            }
+
+            const items = xmlDoc.getElementsByTagName("item");
+            let noticiasHTML = "";
+
+            for (let i = 0; i < Math.min(items.length, maxNoticiasPorFeed); i++) {
+                const item = items[i];
+                const title = item.querySelector("title")?.textContent || "Sin título";
+                const description = item.querySelector("description")?.textContent || "Sin descripción";
+                const link = item.querySelector("link")?.textContent || "#";
+                
+                // Buscar imagen en distintas etiquetas
+                let thumbnail = item.querySelector("media\\:content, content")?.getAttribute("url") ||
+                                item.querySelector("media\\:thumbnail, thumbnail")?.getAttribute("url") || "";
+
+                // Generar HTML para la noticia
+                noticiasHTML += `
+                    <div class="noticia">
+                        <h3>${title}</h3>
+                        ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ""}      
+                        <p>${description.substring(0, 80)}...</p>
+                        <a href="${link}" target="_blank">Ver noticia completa</a>
+                    </div>
+                `;
+            }
+
+            // Agregar las noticias al contenedor
+            document.getElementById(contenedorId).innerHTML += noticiasHTML;
+        })
+        .catch(error => console.error(`Error cargando el feed ${feedUrl}:`, error));
+}
+
+</script>
 
 <script>
         async function cargarNoticiasT() {
