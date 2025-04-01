@@ -159,6 +159,27 @@ h3, .h3 {
    color: #FFD966;
 }         
     </style>
+
+  <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let player = document.getElementById("radio-player");
+            let source = document.getElementById("radio-source");
+            let savedStation = localStorage.getItem("currentRadio");
+            
+            if (savedStation) {
+                source.src = savedStation;
+                player.load();
+                player.play();
+            }
+
+            window.changeStation = function(url) {
+                source.src = url;
+                player.load();
+                player.play();
+                localStorage.setItem("currentRadio", url);
+            };
+        });
+    </script>
 </head>
 
   
@@ -1316,6 +1337,16 @@ setInterval(checkAllSongTitles, 2000);
 
 <!-- Incluir JS del Splash -->
 <script src="splash.js"></script>
+
+   <script>
+        function loadPage(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("content").innerHTML = html;
+                });
+        }
+    </script>
   
 </body>
 </html>
